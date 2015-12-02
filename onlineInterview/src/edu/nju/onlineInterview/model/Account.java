@@ -14,7 +14,7 @@ import javax.persistence.UniqueConstraint;
  * 
  * @author margine
  * @description relate to the table account, dealing with login/logout operations 
- * @createTime 2015Äê11ÔÂ15ÈÕÏÂÎç6:40:38
+ * @createTime 2015ï¿½ï¿½11ï¿½ï¿½15ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½6:40:38
  * @contact ch_margine@163.com
  */
 @Entity
@@ -40,12 +40,17 @@ public class Account implements Serializable{
 	private String password;
 	private String type;
 	
-	public Account(Integer _id, String _name, String _password, RoleType roleType){
-		id = _id;
+	public Account(String _name, String _password, RoleType roleType){
 		name = _name;
 		password = _password;
 		type = roleType.getDesc();
 	}
+	
+	public Account(String _name, String _password) {
+		name = _name;
+		password = _password;
+	}
+	
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name=ACCOUNT_ID, unique=true, nullable=false)

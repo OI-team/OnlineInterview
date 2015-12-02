@@ -7,7 +7,7 @@ import java.util.List;
  * 
  * @author margine
  * @description define the base interface for DAO.
- * @createTime 2015Äê11ÔÂ15ÈÕÏÂÎç3:23:20
+ * @createTime 2015ï¿½ï¿½11ï¿½ï¿½15ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3:23:20
  * @contact ch_margine@163.com
  * @param <T>
  */
@@ -19,7 +19,7 @@ public interface IBaseDAO<T> {
 	   public void save(T t);
 	   
 	   /**
-	    * copy the properties of detached object to persistent object
+	    * update or insert
 	    * @param t
 	    * @return persistent object
 	    */
