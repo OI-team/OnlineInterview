@@ -1,6 +1,8 @@
 package edu.nju.onlineInterview.dao;
 
-public class StudentDAO extends BaseDAO<StudentDAO>{
+import edu.nju.onlineInterview.model.Student;
+
+public class StudentDAO extends BaseDAO<Student>{
 
 	
 	

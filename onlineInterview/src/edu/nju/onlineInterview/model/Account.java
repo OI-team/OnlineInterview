@@ -18,7 +18,7 @@ import javax.persistence.UniqueConstraint;
  * @contact ch_margine@163.com
  */
 @Entity
-@Table(name="account", catalog="oi", uniqueConstraints=@UniqueConstraint(columnNames="account_name"))
+@Table(name="account", catalog="interview", uniqueConstraints=@UniqueConstraint(columnNames="a_name"))
 public class Account implements Serializable{
 
 	/**
@@ -26,13 +26,13 @@ public class Account implements Serializable{
 	 */
 	private static final long serialVersionUID = -8835469707655628380L;
 	
-	public static final String ACCOUNT_ID = "account_id";
+	public static final String ACCOUNT_ID = "a_id";
 	/**the name of the account. There are three situations. email for student, name for teacher, 'admin' for administrator*/
-	public static final String ACCOUNT_NAME = "account_name";
+	public static final String ACCOUNT_NAME = "a_name";
 	/**password of the account*/
-	public static final String ACCOUNT_PWD = "account_pwd";
+	public static final String ACCOUNT_PWD = "a_pwd";
 	/**type of the account. student|teacher|admin*/
-	public static final String ACCOUNT_TYPE = "account_type";
+	public static final String ACCOUNT_TYPE = "a_type";
 
 	
 	private Integer id;
@@ -62,7 +62,7 @@ public class Account implements Serializable{
 		this.id = id;
 	}
 
-	@Column(name=ACCOUNT_NAME, unique=true)
+	@Column(name=ACCOUNT_NAME, unique=true,nullable=false)
 	public String getName() {
 		return name;
 	}
