@@ -8,13 +8,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import edu.nju.onlineInterview.dao.IBaseDAO;
-
 /**
  * 
  * @author margine
  * @description
- * @createTime 2015Äê11ÔÂ15ÈÕÏÂÎç3:33:25
+ * @createTime 2015ï¿½ï¿½11ï¿½ï¿½15ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3:33:25
  * @contact ch_margine@163.com
  */
 
