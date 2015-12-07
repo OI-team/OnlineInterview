@@ -13,27 +13,27 @@ import javax.persistence.Table;
  * 
  * @author margine
  * @description the basic information of student 
- * @createTime 2015ï¿½ï¿½11ï¿½ï¿½15ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4:55:08
+ * @createTime 2015Äê11ÔÂ15ÈÕÏÂÎç4:55:08
  * @contact ch_margine@163.com
  */
 
 @Entity
-@Table(name="student", catalog="interview")
+@Table(name="student", catalog="oi")
 public class Student implements Serializable{
 
 	/**
 	 * 
 	 */
-	public static final String STU_ID = "s_id";
-	public static final String STU_NAME = "s_name";
-	public static final String STU_GENDER = "s_gender";
-	public static final String STU_SCHOOL = "s_school";
-	public static final String STU_MAJOR = "s_major";
+	public static final String STU_ID = "stu_id";
+	public static final String STU_NAME = "stu_name";
+	public static final String STU_SEX = "stu_sex";
+	public static final String STU_SCHOOL = "stu_school";
+	public static final String STU_MAJOR = "stu_major";
 	/**the id of the student is his(her) major*/
-	public static final String STU_NUM = "s_num";
+	public static final String STU_NUM = "stu_num";
 	/**the rank of student's score*/
-	public static final String STU_RANK = "s_rank";
-	public static final String STU_PHONE = "s_phone";
+	public static final String STU_RANK = "stu_rank";
+	public static final String STU_PHONE = "stu_phone";
 	
 	private static final long serialVersionUID = -1939141102377888343L;
 	private Integer id;
@@ -55,18 +55,7 @@ public class Student implements Serializable{
 		number = _number;
 		phone = _phone;
 	}
-	
-	public Student(String _name, String _sex, String _school, String _major, Integer _rank, String _number, String _phone) {
-		name = _name;
-		sex = _sex;
-		school = _school;
-		major = _major;
-		rank = _rank;
-		number = _number;
-		phone = _phone;
 
-	}
-	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name=STU_ID, unique=true, nullable=false)
 	public Integer getId() {
@@ -86,7 +75,7 @@ public class Student implements Serializable{
 		this.name = name;
 	}
 
-	@Column(name=STU_GENDER)
+	@Column(name=STU_SEX)
 	public String getSex() {
 		return sex;
 	}
