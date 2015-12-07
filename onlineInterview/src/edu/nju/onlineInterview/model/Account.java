@@ -14,11 +14,11 @@ import javax.persistence.UniqueConstraint;
  * 
  * @author margine
  * @description relate to the table account, dealing with login/logout operations 
- * @createTime 2015Äê11ÔÂ15ÈÕÏÂÎç6:40:38
+ * @createTime 2015ï¿½ï¿½11ï¿½ï¿½15ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½6:40:38
  * @contact ch_margine@163.com
  */
 @Entity
-@Table(name="account", catalog="oi", uniqueConstraints=@UniqueConstraint(columnNames="account_name"))
+@Table(name="account", catalog="interview", uniqueConstraints=@UniqueConstraint(columnNames="a_name"))
 public class Account implements Serializable{
 
 	/**
@@ -26,13 +26,13 @@ public class Account implements Serializable{
 	 */
 	private static final long serialVersionUID = -8835469707655628380L;
 	
-	public static final String ACCOUNT_ID = "account_id";
+	public static final String ACCOUNT_ID = "a_id";
 	/**the name of the account. There are three situations. email for student, name for teacher, 'admin' for administrator*/
-	public static final String ACCOUNT_NAME = "account_name";
+	public static final String ACCOUNT_NAME = "a_name";
 	/**password of the account*/
-	public static final String ACCOUNT_PWD = "account_pwd";
+	public static final String ACCOUNT_PWD = "a_pwd";
 	/**type of the account. student|teacher|admin*/
-	public static final String ACCOUNT_TYPE = "account_type";
+	public static final String ACCOUNT_TYPE = "a_type";
 
 	
 	private Integer id;
@@ -40,12 +40,17 @@ public class Account implements Serializable{
 	private String password;
 	private String type;
 	
-	public Account(Integer _id, String _name, String _password, RoleType roleType){
-		id = _id;
+	public Account(String _name, String _password, RoleType roleType){
 		name = _name;
 		password = _password;
 		type = roleType.getDesc();
 	}
+	
+	public Account(String _name, String _password) {
+		name = _name;
+		password = _password;
+	}
+	
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name=ACCOUNT_ID, unique=true, nullable=false)
@@ -57,7 +62,7 @@ public class Account implements Serializable{
 		this.id = id;
 	}
 
-	@Column(name=ACCOUNT_NAME, unique=true)
+	@Column(name=ACCOUNT_NAME, unique=true,nullable=false)
 	public String getName() {
 		return name;
 	}
