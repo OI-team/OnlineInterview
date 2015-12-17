@@ -14,7 +14,7 @@ import edu.nju.onlineInterview.dao.IBaseDAO;
  * 
  * @author margine
  * @description
- * @createTime 2015Äê11ÔÂ15ÈÕÏÂÎç3:33:25
+ * @createTime 2015ï¿½ï¿½11ï¿½ï¿½15ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3:33:25
  * @contact ch_margine@163.com
  */
 
@@ -116,7 +116,6 @@ public class BaseDAO<T> extends HibernateDaoSupport implements IBaseDAO<T> {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findByExample(T t){
 		String className = t.getClass().getName();
@@ -140,7 +139,7 @@ public class BaseDAO<T> extends HibernateDaoSupport implements IBaseDAO<T> {
 		log.debug("finding " + className + " instance with property: " + propertyName + ", value: " + value);
 		try {
 			String queryString = "from " + className + " as model where model." + propertyName + "= ?";
-			return getHibernateTemplate().find(queryString, value);
+			return (List<T>) getHibernateTemplate().find(queryString, value);
 		} catch (RuntimeException re) {
 			log.error("find by property name failed", re);
 			throw re;
@@ -154,7 +153,7 @@ public class BaseDAO<T> extends HibernateDaoSupport implements IBaseDAO<T> {
 		log.debug("finding all " + className + " instances");
 		try {
 			String queryString = "from " + className;
-			return getHibernateTemplate().find(queryString);
+			return (List<T>) getHibernateTemplate().find(queryString);
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);
 			throw re;

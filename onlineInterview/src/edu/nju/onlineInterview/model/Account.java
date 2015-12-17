@@ -89,7 +89,4 @@ public class Account implements Serializable{
 		this.type = type;
 	}
 	
-	public RoleType getRoleType(){
-		return RoleType.valueOf(type);
-	}
 }
