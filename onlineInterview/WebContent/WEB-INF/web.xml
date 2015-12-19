@@ -3,7 +3,7 @@
   <display-name>onlineInterview</display-name>
   	
   <welcome-file-list>
-    <welcome-file>/demo.jsp</welcome-file>
+    <welcome-file>/demo.html</welcome-file>
   </welcome-file-list>
   
   <listener>
