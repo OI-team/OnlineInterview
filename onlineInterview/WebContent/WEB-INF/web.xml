@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>comparePrice</display-name>
+  <display-name>onlineInterview</display-name>
   	
+  <welcome-file-list>
+    <welcome-file>/demo.html</welcome-file>
+  </welcome-file-list>
+  
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/classes/applicationContext.xml</param-value>
+    <param-value>/WEB-INF/spring-main.xml</param-value>
   </context-param>
-  
-  <welcome-file-list>
-    <welcome-file>/login.jsp</welcome-file>
-  </welcome-file-list>
   
   <!-- filters -->
   <filter>
@@ -36,29 +36,29 @@
   
   <filter>
   	<filter-name>adminFilter</filter-name>
-  	<filter-class>nju.edu.onlineInterview.filter.AdminFilter</filter-class>
+  	<filter-class>edu.nju.onlineInterview.filter.AdminFilter</filter-class>
   </filter>
   <filter-mapping>
   	<filter-name>adminFilter</filter-name>
-  	<url-pattern>*/</url-pattern>
+  	<url-pattern>/*</url-pattern>
   </filter-mapping>
   
   <filter>
   	<filter-name>studentFilter</filter-name>
-  	<filter-class>nju.edu.onlineInterview.filter.StudentFilter</filter-class>
+  	<filter-class>edu.nju.onlineInterview.filter.StudentFilter</filter-class>
   </filter>
   <filter-mapping>
   	<filter-name>studentFilter</filter-name>
-  	<url-pattern>*/</url-pattern>
+  	<url-pattern>/*</url-pattern>
   </filter-mapping>
   
   <filter>
   	<filter-name>teacherFilter</filter-name>
-  	<filter-class>nju.edu.onlineInterview.filter.TeacherFilter</filter-class>
+  	<filter-class>edu.nju.onlineInterview.filter.TeacherFilter</filter-class>
   </filter>
   <filter-mapping>
   	<filter-name>teacherFilter</filter-name>
-  	<url-pattern>*/</url-pattern>
+  	<url-pattern>/*</url-pattern>
   </filter-mapping>
   
   <filter>
@@ -69,5 +69,5 @@
     <filter-name>struts2</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
+
 </web-app>
