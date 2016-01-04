@@ -115,6 +115,8 @@ public interface IBaseDAO<T> {
 	 * @return
 	 */
 	public List<T> findListByProperty(Map<String, ? extends Object> conditionMap);
+	
+	public List<T> findAll();
 
 	public Boolean isExist(Map<String, ? extends Object> conditionMap);
 

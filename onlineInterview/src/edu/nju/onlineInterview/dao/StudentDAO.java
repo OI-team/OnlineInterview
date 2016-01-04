@@ -24,6 +24,6 @@ public class StudentDAO extends BaseDAO<Student>{
 	 */
 	public List<Student> findAllStudents(){
 		log.debug("find all students");
-		return findAll(Student.class);
+		return findAll();
 	}
 }

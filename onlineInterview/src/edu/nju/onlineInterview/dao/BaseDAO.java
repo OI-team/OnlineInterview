@@ -214,6 +214,12 @@ public class BaseDAO<T> extends HibernateDaoSupport implements IBaseDAO<T> {
 		}
 		return findList(hql.toString(), conditionMap);
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findAll() {
+		return getCurrentSession().createQuery("from " + entityClazz.getName()).list();
+	}
 
 	protected Query setParameter(Query query, Map<String, ? extends Object> parameterMap) {
 		for (@SuppressWarnings("rawtypes")

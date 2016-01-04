@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="struts2-student" extends="struts-default">
+		<action name="login" class="studentLoginAction">
+			<result>/studentLogin.jsp</result>
+		</action>
+		
+		<action name="signup" class="studentSignupAction">
+			<result name="input" type="redirect">/signup.jsp</result>
+			<result name="success" type="chain">index</result>
+			<result name="error" type="redirect">/signup.jsp</result>
+		</action>
+		
+		<action name="index" class="indexAction">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+	</package>
+</struts>
