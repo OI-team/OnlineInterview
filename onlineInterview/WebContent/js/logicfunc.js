@@ -1,6 +1,6 @@
 // AnyChat for Web SDK
  
-var mDefaultServerAddr = "192.168.191.4";		// default server addressַ
+var mDefaultServerAddr = "demo.anychat.cn"   //"192.168.191.4"  default server addressַ
 var mDefaultServerPort = 8906;					// default server port
 var mSelfUserId = -1; 							// local userID
 var mTargetUserId = -1;							// target userID
@@ -153,6 +153,20 @@ function InitInterfaceUI() {
     }
     GetID("advanceset_div_close").onclick = function () {
         GetID("advanceset_div").style.display = "none";
+    }
+    
+  //视频录像
+	GetID("record").onclick = function () {
+        BRAC_StreamRecordCtrl(-1,1,0,1);
+    }
+	//停止录像
+	 GetID("stoprecord").onclick = function () {
+        BRAC_StreamRecordCtrl(-1,0,0,1);
+    }
+	
+	//拍照
+	 GetID("takephoto").onclick = function () {
+        BRAC_SnapShot(-1,BRAC_RECORD_FLAGS_SNAPSHOT,1);
     }
 }
 
