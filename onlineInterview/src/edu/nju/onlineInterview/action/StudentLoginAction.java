@@ -12,8 +12,7 @@ public class StudentLoginAction extends BaseAction{
 	
 	@Override
 	public String execute(){
-		//TODO realize it 
-		return INPUT;
+		return SUCCESS;
 	}
 	
 	public String logOut(){

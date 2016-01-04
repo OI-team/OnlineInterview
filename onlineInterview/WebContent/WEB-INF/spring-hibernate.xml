@@ -41,6 +41,12 @@
 		<property name="dataSource">
 			<ref bean="dataSource"></ref>
 		</property>
+		<property name="packagesToScan">
+			<list>
+				<value>edu.nju.onlineInterview.model.Account</value>
+				<value>edu.nju.onlineInterview.model.Student</value>
+			</list>
+		</property>
 		<property name="hibernateProperties">
 			 <props>
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
@@ -58,4 +64,28 @@
         	</list>
         </property>
   </bean>
+  
+  <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+  	<property name="sessionFactory" ref="sessionFactory">
+  	</property>
+  </bean>
+  
+   <tx:annotation-driven transaction-manager="transactionManager"/>
+  <!--事务通知  -->
+  <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="sav*" propagation="REQUIRED" rollback-for="Exception"/> <!-- rollback-for回滚事物，果存在一个事务，则支持当前事务。如果没有事务则开启  -->
+            <tx:method name="del*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="add*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="upd*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="qry*" propagation="REQUIRED" read-only="true"/> 
+            <tx:method name="*" propagation="REQUIRED" read-only="true"/>
+        </tx:attributes>  
+    </tx:advice>
+    <!-- 事务切入 -->
+    <aop:config proxy-target-class="true">
+        <aop:pointcut id="cut"
+            expression="execution(* edu.nju.onlineInterview.dao.*.*(..))" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="cut" />
+    </aop:config>
 </beans>

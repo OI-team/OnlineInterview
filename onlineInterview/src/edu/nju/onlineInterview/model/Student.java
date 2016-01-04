@@ -13,42 +13,53 @@ import javax.persistence.Table;
  * 
  * @author margine
  * @description the basic information of student 
- * @createTime 2015Äê11ÔÂ15ÈÕÏÂÎç4:55:08
+ * @createTime 2015ï¿½ï¿½11ï¿½ï¿½15ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4:55:08
  * @contact ch_margine@163.com
  */
 
 @Entity
-@Table(name="student", catalog="oi")
+@Table(name="student", catalog="interview")
 public class Student implements Serializable{
 
 	/**
 	 * 
 	 */
-	public static final String STU_ID = "stu_id";
-	public static final String STU_NAME = "stu_name";
-	public static final String STU_SEX = "stu_sex";
-	public static final String STU_SCHOOL = "stu_school";
-	public static final String STU_MAJOR = "stu_major";
+	public static final String STU_ID = "s_id";
+	public static final String STU_NAME = "s_name";
+	public static final String STU_GENDER = "s_gender";
+	public static final String STU_SCHOOL = "s_school";
+	public static final String STU_MAJOR = "s_major";
 	/**the id of the student is his(her) major*/
-	public static final String STU_NUM = "stu_num";
+	public static final String STU_NUM = "s_num";
 	/**the rank of student's score*/
-	public static final String STU_RANK = "stu_rank";
-	public static final String STU_PHONE = "stu_phone";
+	public static final String STU_RANK = "s_rank";
+	public static final String STU_PHONE = "s_phone";
 	
 	private static final long serialVersionUID = -1939141102377888343L;
 	private Integer id;
+	private Integer accountId;
 	private String name;
-	private String sex;
+	private String gender;
 	private String school;
 	private String major;
 	private Integer rank;
 	private String number;
 	private String phone;
 	
-	public Student(Integer _id, String _name, String _sex, String _school, String _major, Integer _rank, String _number, String _phone){
-		id = _id;
+	/**
+	 * full construction
+	 * @param _name
+	 * @param _gender
+	 * @param _school
+	 * @param _major
+	 * @param _rank
+	 * @param _number
+	 * @param _phone
+	 */
+	public Student(Integer _accountId, String _name, String _gender, String _school, String _major, Integer _rank, String _number, String _phone){
+		accountId = _accountId;
 		name = _name;
-		sex = _sex;
+		gender = _gender;
 		school = _school;
 		major = _major;
 		rank = _rank;
@@ -56,6 +67,16 @@ public class Student implements Serializable{
 		phone = _phone;
 	}
 
+	/**
+	 * simple construction
+	 * @param _name
+	 */
+	public Student(Integer accountId, String _name) {
+		this.accountId = accountId;
+		name = _name;
+	}
+	public Student() {}
+	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name=STU_ID, unique=true, nullable=false)
 	public Integer getId() {
@@ -64,6 +85,15 @@ public class Student implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	@Column(name=Account.ACCOUNT_ID, unique=true, nullable=false)
+	public Integer getAccountId(){
+		return accountId;
+	}
+	
+	public void setAccountId(Integer accountId){
+		this.accountId = accountId;
 	}
 
 	@Column(name=STU_NAME, nullable=false)
@@ -75,13 +105,13 @@ public class Student implements Serializable{
 		this.name = name;
 	}
 
-	@Column(name=STU_SEX)
+	@Column(name=STU_GENDER)
 	public String getSex() {
-		return sex;
+		return gender;
 	}
 
-	public void setSex(String sex) {
-		this.sex = sex;
+	public void setSex(String gender) {
+		this.gender = gender;
 	}
 
 	@Column(name= STU_SCHOOL)

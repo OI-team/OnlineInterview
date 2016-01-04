@@ -17,4 +17,12 @@
  
  	<import resource="spring-hibernate.xml"></import>
 	<import resource="spring-dao.xml"></import>
+	<import resource="spring-action.xml"></import>
+	
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	<bean id="accountService" class="edu.nju.onlineInterview.service.AccountService">
+	</bean>
+	
+	<bean id="studentService" class="edu.nju.onlineInterview.service.StudentService">
+	</bean>
 </beans>

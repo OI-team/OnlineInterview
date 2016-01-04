@@ -1,6 +1,8 @@
 package edu.nju.onlineInterview.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,8 @@ import edu.nju.onlineInterview.model.Account;
  */
 public class AccountService {
 	
+	public final static int ERRORCODE = -1;
+	
 	@Autowired
 	private AccountDAO accountDAO;
 	
@@ -27,8 +31,10 @@ public class AccountService {
 	 * @return
 	 */
 	public Account verifyAccount(String accountName, String password){
-		Account example = new Account(accountName, password);
-		List<Account> results= accountDAO.findByExample(example);
+		Map<String, String> conditionMap = new HashMap<>();
+		conditionMap.put(Account.ACCOUNT_NAME, accountName);
+		conditionMap.put(Account.ACCOUNT_PWD, password);
+		List<Account> results= accountDAO.findListByProperty(conditionMap);
 		if (results != null && results.size() >0) {
 			return results.get(0);
 		}
@@ -42,14 +48,11 @@ public class AccountService {
 	 */
 	@Transactional(rollbackFor=Exception.class)
 	public int addAccount(Account account){
-		List<Account> results = accountDAO.findByExample(account);
+		List<Account> results = accountDAO.findListByProperty(Account.ACCOUNT_NAME, account.getName());
 		if (results == null || results.size() == 0) {
-			Account newAccount = accountDAO.merge(account);
-			if (newAccount != null) {
-				return newAccount.getId();
-			}
+			return (int) accountDAO.save(account);
 		}
-		return -1;
+		return ERRORCODE;
 	}
 	
 	@Transactional(rollbackFor=Exception.class)
@@ -64,7 +67,7 @@ public class AccountService {
 	
 	@Transactional(rollbackFor=Exception.class)
 	public boolean updateAccount(Account account){
-		accountDAO.attachDirty(account);
+		accountDAO.update(account);
 		return true;
 	}
 }

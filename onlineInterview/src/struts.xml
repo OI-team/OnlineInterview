@@ -4,10 +4,6 @@
 	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
 <struts>
 	<!-- 用户 -->
-	<package name="struts2-student" extends="struts-default" namespace="/student">
-		<!--action  -->
-	</package>
-	
 	<package name="struts2-teacher" extends="struts-default" namespace="/teacher">
 		
 	</package>
@@ -16,6 +12,6 @@
 		
 	</package>
 	
-	
+<include file="struts-student.xml" />
 </struts> 
 

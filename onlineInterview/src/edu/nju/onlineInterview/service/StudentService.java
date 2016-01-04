@@ -1,10 +1,10 @@
 package edu.nju.onlineInterview.service;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import edu.nju.onlineInterview.dao.StudentDAO;
+import edu.nju.onlineInterview.model.Account;
 import edu.nju.onlineInterview.model.Student;
 
 /**
@@ -33,14 +33,10 @@ public class StudentService {
 	 */
 	
 	public int addStudent(Student student) {
-		List<Student> results = studentDAO.findByExample(student);
-		if (results == null || results.size() == 0) {
-			Student newStudent = studentDAO.merge(student);
-			if (newStudent != null) {
-				return newStudent.getId();
-			}
-		}
-		return -1;
+		if (!studentDAO.isExist(Account.ACCOUNT_ID, student.getAccountId()))
+			return (int) studentDAO.save(student);
+		else
+			return -1;
 	}
 	
 	public Student findStudent(Integer studentId){
@@ -58,7 +54,7 @@ public class StudentService {
 	}
 	
 	public boolean updateStudent(Student student){
-		studentDAO.attachDirty(student);
+		studentDAO.update(student);
 		return true;
 	}
 }
