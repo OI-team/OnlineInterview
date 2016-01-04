@@ -1,5 +1,7 @@
 package edu.nju.onlineInterview.dao;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,4 +17,13 @@ public class StudentDAO extends BaseDAO<Student>{
 		return findById(Student.class, id);
 	}
 	
+	/*
+	 * @author mzdong
+	 * @return List<Student>
+	 * Find all students, used in AdminService.java.
+	 */
+	public List<Student> findAllStudents(){
+		log.debug("find all students");
+		return findAll(Student.class);
+	}
 }
