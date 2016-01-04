@@ -1,10 +1,10 @@
 // AnyChat for Web SDK
 
 /********************************************
- *				ÊÂ¼þ»Øµ÷²¿·Ö				*
+ *				ï¿½Â¼ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½				*
  *******************************************/
  
- // Òì²½ÏûÏ¢Í¨Öª£¬°üÀ¨Á¬½Ó·þÎñÆ÷¡¢µÇÂ¼ÏµÍ³¡¢½øÈë·¿¼äµÈÏûÏ¢
+ // ï¿½ì²½ï¿½ï¿½Ï¢Í¨Öªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ë·¿ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 function OnAnyChatNotifyMessage(dwNotifyMsg, wParam, lParam) {
 	switch(dwNotifyMsg) {
 		case WM_GV_CONNECT:			OnAnyChatConnect(wParam, lParam);			break;
@@ -27,52 +27,52 @@ function OnAnyChatNotifyMessage(dwNotifyMsg, wParam, lParam) {
 	}
 }
 
-// ÊÕµ½ÎÄ×ÖÏûÏ¢
+// ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 function OnAnyChatTextMessage(dwFromUserId, dwToUserId, bSecret, lpMsgBuf, dwLen) {
 	DisplayTextMessage(dwFromUserId, lpMsgBuf);
 }
 
-// ÊÕµ½Í¸Ã÷Í¨µÀ´«ÊäÊý¾Ý
+// ï¿½Õµï¿½Í¸ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 function OnAnyChatTransBuffer(dwUserId, lpBuf, dwLen) {
 
 }
 
-// ÊÕµ½Í¸Ã÷Í¨µÀ£¨À©Õ¹£©´«ÊäÊý¾Ý
+// ï¿½Õµï¿½Í¸ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 function OnAnyChatTransBufferEx(dwUserId, lpBuf, dwLen, wParam, lParam, dwTaskId) {
 
 }
 
-// ÎÄ¼þ´«ÊäÍê³ÉÍ¨Öª
+// ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨Öª
 function OnAnyChatTransFile(dwUserId, lpFileName, lpTempFilePath, dwFileLength, wParam, lParam, dwTaskId) {
 
 }
 
-// ÏµÍ³ÒôÁ¿¸Ä±äÍ¨Öª
+// ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½Í¨Öª
 function OnAnyChatVolumeChange(device, dwCurrentVolume) {
 
 }
 
-// ÊÕµ½·þÎñÆ÷·¢ËÍµÄSDK FilterÊý¾Ý
+// ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½SDK Filterï¿½ï¿½ï¿½ï¿½
 function OnAnyChatSDKFilterData(lpBuf, dwLen) {
 
 }
 
-// ÊÕµ½Â¼Ïñ»òÅÄÕÕÍê³ÉÊÂ¼þ
+// ï¿½Õµï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
 function OnAnyChatRecordSnapShot(dwUserId, lpFileName, dwParam, bRecordType) {
-
+	AddLog("OnAnyChatRecordSnapShot(dwUserId=" + dwUserId +";storePath"+ lpFileName+")", LOG_TYPE_EVENT);
 }
 
-// ÊÕµ½Â¼Ïñ»òÅÄÕÕÍê³ÉÊÂ¼þ£¨À©Õ¹£©
+// ï¿½Õµï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½
 function OnAnyChatRecordSnapShotEx(dwUserId, lpFileName, dwElapse, dwFlags, dwParam, lpUserStr) {
 
 }
 
 
 /********************************************
- *		AnyChat SDKºËÐÄÒµÎñÁ÷³Ì				*
+ *		AnyChat SDKï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½				*
  *******************************************/
  
-// ¿Í»§¶ËÁ¬½Ó·þÎñÆ÷£¬bSuccess±íÊ¾ÊÇ·ñÁ¬½Ó³É¹¦£¬errorcode±íÊ¾³ö´í´úÂë
+// ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bSuccessï¿½ï¿½Ê¾ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½errorcodeï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 function OnAnyChatConnect(bSuccess, errorcode) {
 	AddLog("OnAnyChatConnect(errorcode" + errorcode + ")", LOG_TYPE_EVENT);
     if (errorcode == 0) {
@@ -83,7 +83,7 @@ function OnAnyChatConnect(bSuccess, errorcode) {
     }
 }
 
-// ¿Í»§¶ËµÇÂ¼ÏµÍ³£¬dwUserId±íÊ¾×Ô¼ºµÄÓÃ»§IDºÅ£¬errorcode±íÊ¾µÇÂ¼½á¹û£º0 ³É¹¦£¬·ñÔòÎª³ö´í´úÂë£¬²Î¿¼³ö´í´úÂë¶¨Òå
+// ï¿½Í»ï¿½ï¿½Ëµï¿½Â¼ÏµÍ³ï¿½ï¿½dwUserIdï¿½ï¿½Ê¾ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Ã»ï¿½IDï¿½Å£ï¿½errorcodeï¿½ï¿½Ê¾ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½0 ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½Î¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¶¨ï¿½ï¿½
 function OnAnyChatLoginSystem(dwUserId, errorcode) {
 	DisplayLoadingDiv(false);
 	AddLog("OnAnyChatLoginSystem(userid=" + dwUserId + ", errorcode=" + errorcode + ")", LOG_TYPE_EVENT);
@@ -96,20 +96,20 @@ function OnAnyChatLoginSystem(dwUserId, errorcode) {
     }
 }
 
-// ¿Í»§¶Ë½øÈë·¿¼ä£¬dwRoomId±íÊ¾Ëù½øÈë·¿¼äµÄIDºÅ£¬errorcode±íÊ¾ÊÇ·ñ½øÈë·¿¼ä£º0³É¹¦½øÈë£¬·ñÔòÎª³ö´í´úÂë
+// ï¿½Í»ï¿½ï¿½Ë½ï¿½ï¿½ë·¿ï¿½ä£¬dwRoomIdï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ë·¿ï¿½ï¿½ï¿½IDï¿½Å£ï¿½errorcodeï¿½ï¿½Ê¾ï¿½Ç·ï¿½ï¿½ï¿½ë·¿ï¿½ä£º0ï¿½É¹ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 function OnAnyChatEnterRoom(dwRoomId, errorcode) {
     DisplayLoadingDiv(false);
 	AddLog("OnAnyChatEnterRoom(roomid=" + dwRoomId + ", errorcode=" + errorcode + ")", LOG_TYPE_EVENT);
     if (errorcode == 0) {
         ShowRoomDiv(true);
-		RoomUserListControl(mSelfUserId, true);		// ½«×Ô¼º²åÈëÓÃ»§ÁÐ±í
-        BRAC_UserCameraControl(mSelfUserId, 1); 	// ´ò¿ª±¾µØÊÓÆµ
-        BRAC_UserSpeakControl(mSelfUserId, 1); 		// ´ò¿ª±¾µØÓïÒô
+		RoomUserListControl(mSelfUserId, true);		// ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ð±ï¿½
+        BRAC_UserCameraControl(mSelfUserId, 1); 	// ï¿½ò¿ª±ï¿½ï¿½ï¿½ï¿½ï¿½Æµ
+        BRAC_UserSpeakControl(mSelfUserId, 1); 		// ï¿½ò¿ª±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		ShowNotifyMessage("Welcome use AnyChat, successfully enter the room:" + dwRoomId, NOTIFY_TYPE_SYSTEM);
-        // ÉèÖÃ±¾µØÊÓÆµÏÔÊ¾Î»ÖÃ
+        // ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½Ê¾Î»ï¿½ï¿½
         BRAC_SetVideoPos(mSelfUserId, GetID("AnyChatLocalVideoDiv"), "ANYCHAT_VIDEO_LOCAL");
-        // ÉèÖÃÔ¶³ÌÊÓÆµÏÔÊ¾Î»ÖÃ£¨Ã»ÓÐ¹ØÁªµ½ÓÃ»§£¬Ö»ÊÇÕ¼Î»ÖÃ£©
+        // ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½Ê¾Î»ï¿½Ã£ï¿½Ã»ï¿½Ð¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Õ¼Î»ï¿½Ã£ï¿½
         BRAC_SetVideoPos(0, GetID("AnyChatRemoteVideoDiv"), "ANYCHAT_VIDEO_REMOTE");
 
         mRefreshVolumeTimer = setInterval(function () {
@@ -124,14 +124,14 @@ function OnAnyChatEnterRoom(dwRoomId, errorcode) {
     }
 }
 
-// ÊÕµ½µ±Ç°·¿¼äµÄÔÚÏßÓÃ»§ÐÅÏ¢£¬½øÈë·¿¼äºó´¥·¢Ò»´Î£¬dwUserCount±íÊ¾ÔÚÏßÓÃ»§Êý£¨°üº¬×Ô¼º£©£¬dwRoomId±íÊ¾·¿¼äID
+// ï¿½Õµï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ë·¿ï¿½ï¿½ó´¥·ï¿½Ò»ï¿½Î£ï¿½dwUserCountï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½dwRoomIdï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ID
 function OnAnyChatRoomOnlineUser(dwUserCount, dwRoomId) {
 	AddLog("OnAnyChatRoomOnlineUser(count=" + dwUserCount + ", roomid=" + dwRoomId + ")", LOG_TYPE_EVENT);
 	var useridlist = BRAC_GetOnlineUser();
 	for (var i = 0; i < useridlist.length; i++) {
 		RoomUserListControl(useridlist[i], true);
     }
-	// ÇëÇóÆäÖÐÒ»¸öÓÃ»§µÄÒôÊÓÆµ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµ
 	for (var k=0; k<useridlist.length; k++) {
 		if(useridlist[k] == mSelfUserId)
 			continue;
@@ -140,18 +140,18 @@ function OnAnyChatRoomOnlineUser(dwUserCount, dwRoomId) {
 	}
 }
 
-// ÓÃ»§½øÈë£¨Àë¿ª£©·¿¼ä£¬dwUserId±íÊ¾ÓÃ»§IDºÅ£¬bEnterRoom±íÊ¾¸ÃÓÃ»§ÊÇ½øÈë£¨1£©»òÀë¿ª£¨0£©·¿¼ä
+// ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ë£¨ï¿½ë¿ªï¿½ï¿½ï¿½ï¿½ï¿½ä£¬dwUserIdï¿½ï¿½Ê¾ï¿½Ã»ï¿½IDï¿½Å£ï¿½bEnterRoomï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ç½ï¿½ï¿½ë£¨1ï¿½ï¿½ï¿½ï¿½ï¿½ë¿ªï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 function OnAnyChatUserAtRoom(dwUserId, bEnterRoom) {
 	AddLog("OnAnyChatUserAtRoom(userid=" + dwUserId + ", benter=" + bEnterRoom + ")", LOG_TYPE_EVENT);
 	RoomUserListControl(dwUserId, bEnterRoom ? true : false);
     if (bEnterRoom == 1) {
 		ShowNotifyMessage(BRAC_GetUserName(dwUserId) +"&nbspenter room!", NOTIFY_TYPE_NORMAL);
-		if(mTargetUserId == -1)						// Ä¬ÈÏ´ò¿ªÒ»¸öÓÃ»§µÄÒôÊÓÆµ
+		if(mTargetUserId == -1)						// Ä¬ï¿½Ï´ï¿½Ò»ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµ
 			RequestOtherUserVideo(dwUserId);
     }
     else {
 		ShowNotifyMessage(BRAC_GetUserName(dwUserId) +"&nbspleave room!", NOTIFY_TYPE_NORMAL);
-        if (dwUserId == mTargetUserId) {			// µ±Ç°±»ÇëÇóµÄÓÃ»§Àë¿ª·¿¼ä£¬Ä¬ÈÏÇëÇó·¿¼äÖÐÆäËüÓÃ»§µÄÒôÊÓÆµ
+        if (dwUserId == mTargetUserId) {			// ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ë¿ªï¿½ï¿½ï¿½ä£¬Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ó·¿¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµ
 			reVideoDivSize();
 			var bRequestOtherUser = false;
 			var useridlist = BRAC_GetOnlineUser();
@@ -162,7 +162,7 @@ function OnAnyChatUserAtRoom(dwUserId, bEnterRoom) {
 				bRequestOtherUser = true;
 				break;
 			}
-			if(!bRequestOtherUser) {				// Èç¹ûÃ»ÓÐÆäËüÓÃ»§ÔÚÏß£¬ÔòÇå³ý×´Ì¬
+			if(!bRequestOtherUser) {				// ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
 				mTargetUserId = -1;
 				BRAC_SetVideoPos(0, GetID("AnyChatRemoteVideoDiv"), "ANYCHAT_VIDEO_REMOTE");
 			}
@@ -171,7 +171,7 @@ function OnAnyChatUserAtRoom(dwUserId, bEnterRoom) {
     DisplayScroll("room_div_userlist");
 }
 
-// ÍøÂçÁ¬½ÓÒÑ¹Ø±Õ£¬¸ÃÏûÏ¢Ö»ÓÐÔÚ¿Í»§¶ËÁ¬½Ó·þÎñÆ÷³É¹¦Ö®ºó£¬ÍøÂçÒì³£ÖÐ¶ÏÖ®Ê±´¥·¢£¬reason±íÊ¾Á¬½Ó¶Ï¿ªµÄÔ­Òò
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹Ø±Õ£ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Ö»ï¿½ï¿½ï¿½Ú¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½Ð¶ï¿½Ö®Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½reasonï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ó¶Ï¿ï¿½ï¿½ï¿½Ô­ï¿½ï¿½
 function OnAnyChatLinkClose(reason, errorcode) {
 	AddLog("OnAnyChatLinkClose(reason=" + reason + ", errorcode=" + errorcode + ")", LOG_TYPE_EVENT);
 	reVideoDivSize();
@@ -181,12 +181,12 @@ function OnAnyChatLinkClose(reason, errorcode) {
 	ShowLoginDiv(true);
 }
 
-// ÓÃ»§µÄÒôÆµÉè±¸×´Ì¬±ä»¯ÏûÏ¢£¬dwUserId±íÊ¾ÓÃ»§IDºÅ£¬State±íÊ¾¸ÃÓÃ»§ÊÇ·ñÒÑ´ò¿ªÒôÆµ²É¼¯Éè±¸£¨0£º¹Ø±Õ£¬1£º´ò¿ª£©
+// ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½è±¸×´Ì¬ï¿½ä»¯ï¿½ï¿½Ï¢ï¿½ï¿½dwUserIdï¿½ï¿½Ê¾ï¿½Ã»ï¿½IDï¿½Å£ï¿½Stateï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ç·ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½Æµï¿½É¼ï¿½ï¿½è±¸ï¿½ï¿½0ï¿½ï¿½ï¿½Ø±Õ£ï¿½1ï¿½ï¿½ï¿½ò¿ª£ï¿½
 function OnAnyChatMicStateChange(dwUserId, State) {
 
 }
 
-// ÓÃ»§ÉãÏñÍ·×´Ì¬·¢Éú±ä»¯£¬dwUserId±íÊ¾ÓÃ»§IDºÅ£¬State±íÊ¾ÉãÏñÍ·µÄµ±Ç°×´Ì¬£¨0£ºÃ»ÓÐÉãÏñÍ·£¬1£ºÓÐÉãÏñÍ·µ«Ã»ÓÐ´ò¿ª£¬2£º´ò¿ª£©
+// ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Í·×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ä»¯ï¿½ï¿½dwUserIdï¿½ï¿½Ê¾ï¿½Ã»ï¿½IDï¿½Å£ï¿½Stateï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Í·ï¿½Äµï¿½Ç°×´Ì¬ï¿½ï¿½0ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½Ã»ï¿½Ð´ò¿ª£ï¿½2ï¿½ï¿½ï¿½ò¿ª£ï¿½
 function OnAnyChatCameraStateChange(dwUserId, State) {
     if (State == 0) GetID(dwUserId + "_CameraTag").src = "";
     if (State == 1) GetID(dwUserId + "_CameraTag").src = "./images/advanceset/camera_false.png";
@@ -205,44 +205,44 @@ function OnAnyChatCameraStateChange(dwUserId, State) {
 	
 }
 
-// ±¾µØÓÃ»§ÓëÆäËüÓÃ»§µÄP2PÍøÂçÁ¬½Ó×´Ì¬·¢Éú±ä»¯£¬dwUserId±íÊ¾ÆäËüÓÃ»§IDºÅ£¬State±íÊ¾±¾µØÓÃ»§ÓëÆäËüÓÃ»§µÄµ±Ç°P2PÍøÂçÁ¬½Ó×´Ì¬£¨0£ºÃ»ÓÐÁ¬½Ó£¬1£º½öTCPÁ¬½Ó£¬2£º½öUDPÁ¬½Ó£¬3£ºTCPÓëUDPÁ¬½Ó£©
+// ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½P2Pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ä»¯ï¿½ï¿½dwUserIdï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½IDï¿½Å£ï¿½Stateï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Äµï¿½Ç°P2Pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½0ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½1ï¿½ï¿½ï¿½ï¿½TCPï¿½ï¿½ï¿½Ó£ï¿½2ï¿½ï¿½ï¿½ï¿½UDPï¿½ï¿½ï¿½Ó£ï¿½3ï¿½ï¿½TCPï¿½ï¿½UDPï¿½ï¿½ï¿½Ó£ï¿½
 function OnAnyChatP2PConnectState(dwUserId, State) {
 
 }
 
-// ÓÃ»§·¢ÆðË½ÁÄÇëÇó£¬dwUserId±íÊ¾·¢ÆðÕßµÄÓÃ»§IDºÅ£¬dwRequestId±íÊ¾Ë½ÁÄÇëÇó±àºÅ£¬±êÊ¶¸ÃÇëÇó
+// ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ë½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½dwUserIdï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½Ã»ï¿½IDï¿½Å£ï¿½dwRequestIdï¿½ï¿½Ê¾Ë½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å£ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 function OnAnyChatPrivateRequest(dwUserId, dwRequestId) {
 
 }
 
-// ÓÃ»§»Ø¸´Ë½ÁÄÇëÇó£¬dwUserId±íÊ¾»Ø¸´ÕßµÄÓÃ»§IDºÅ£¬errorcodeÎª³ö´í´úÂë
+// ï¿½Ã»ï¿½ï¿½Ø¸ï¿½Ë½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½dwUserIdï¿½ï¿½Ê¾ï¿½Ø¸ï¿½ï¿½ßµï¿½ï¿½Ã»ï¿½IDï¿½Å£ï¿½errorcodeÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 function OnAnyChatPrivateEcho(dwUserId, errorcode) {
 
 }
 
-// ÓÃ»§ÍË³öË½ÁÄ£¬dwUserId±íÊ¾ÍË³öÕßµÄÓÃ»§IDºÅ£¬errorcodeÎª³ö´í´úÂë
+// ï¿½Ã»ï¿½ï¿½Ë³ï¿½Ë½ï¿½Ä£ï¿½dwUserIdï¿½ï¿½Ê¾ï¿½Ë³ï¿½ï¿½ßµï¿½ï¿½Ã»ï¿½IDï¿½Å£ï¿½errorcodeÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 function OnAnyChatPrivateExit(dwUserId, errorcode) {
 
 }
 
-// ÊÓÆµÍ¨»°ÏûÏ¢Í¨Öª»Øµ÷º¯Êý
+// ï¿½ï¿½ÆµÍ¨ï¿½ï¿½ï¿½ï¿½Ï¢Í¨Öªï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½
 function OnAnyChatVideoCallEvent(dwEventType, dwUserId, dwErrorCode, dwFlags, dwParam, szUserStr) {
 	AddLog("OnAnyChatVideoCallEvent(dwEventType=" + dwEventType + ", dwUserId=" + dwUserId + ", dwErrorCode=" + dwErrorCode + ", dwFlags=" + dwFlags + ", dwParam=" + dwParam + ", szUserStr=" + szUserStr + ")", LOG_TYPE_EVENT);
 	
 }
 
-// ÓÃ»§ÐÅÏ¢¸üÐÂÍ¨Öª£¬dwUserId±íÊ¾ÓÃ»§IDºÅ£¬dwType±íÊ¾¸üÐÂÀà±ð
+// ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Í¨Öªï¿½ï¿½dwUserIdï¿½ï¿½Ê¾ï¿½Ã»ï¿½IDï¿½Å£ï¿½dwTypeï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 function OnAnyChatUserInfoUpdate(dwUserId, dwType) {
 	AddLog("OnAnyChatUserInfoUpdate(dwUserId=" + dwUserId + ", dwType=" + dwType + ")", LOG_TYPE_EVENT);
 }
 
-// ºÃÓÑÔÚÏß×´Ì¬±ä»¯£¬dwUserId±íÊ¾ºÃÓÑÓÃ»§IDºÅ£¬dwStatus±íÊ¾ÓÃ»§µÄµ±Ç°»î¶¯×´Ì¬£º0 ÀëÏß£¬ 1 ÉÏÏß
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ä»¯ï¿½ï¿½dwUserIdï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½IDï¿½Å£ï¿½dwStatusï¿½ï¿½Ê¾ï¿½Ã»ï¿½ï¿½Äµï¿½Ç°ï¿½î¶¯×´Ì¬ï¿½ï¿½0 ï¿½ï¿½ï¿½ß£ï¿½ 1 ï¿½ï¿½ï¿½ï¿½
 function OnAnyChatFriendStatus(dwUserId, dwStatus) {
 	AddLog("OnAnyChatFriendStatus(dwUserId=" + dwUserId + ", dwStatus=" + dwStatus + ")", LOG_TYPE_EVENT);
 	
 }
 
-// ÓÃ»§ÊÓÆµ·Ö±çÂÊ·¢Éú±ä»¯£¬dwUserId£¨INT£©±íÊ¾ÓÃ»§IDºÅ£¬dwResolution£¨INT£©±íÊ¾ÓÃ»§µÄÊÓÆµ·Ö±æÂÊ×éºÏÖµ£¨µÍ16Î»±íÊ¾¿í¶È£¬¸ß16Î»±íÊ¾¸ß¶È£©
+// ï¿½Ã»ï¿½ï¿½ï¿½Æµï¿½Ö±ï¿½ï¿½Ê·ï¿½ï¿½ï¿½ï¿½ä»¯ï¿½ï¿½dwUserIdï¿½ï¿½INTï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ã»ï¿½IDï¿½Å£ï¿½dwResolutionï¿½ï¿½INTï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½16Î»ï¿½ï¿½Ê¾ï¿½ï¿½È£ï¿½ï¿½ï¿½16Î»ï¿½ï¿½Ê¾ï¿½ß¶È£ï¿½
 function OnAnyChatVideoSizeChange(dwUserId,dwResolution){
 	if(dwUserId!=mTargetUserId)
 		return;
@@ -250,17 +250,17 @@ function OnAnyChatVideoSizeChange(dwUserId,dwResolution){
 	var width=dwResolution&0x0000ffff;
 	var divWidth=GetID("AnyChatRemoteVideoDiv").offsetWidth;
 	var divHeight=GetID("AnyChatRemoteVideoDiv").offsetHeight;
-	//Èç¹û²ÉÓÃÊÓÆµÏÔÊ¾²Ã¼ôÄ£Ê½ÊÇ¶¯Ì¬Ä£Ê½£¬¿É¸ù¾Ý·Ö±æÂÊµÄÇé¿ö£¬¶¯Ì¬¸Ä±ädiv²¼¾Ö£¬Ê¹µÃ»­Ãæ²»±äÐÎ¡£
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½Ê¾ï¿½Ã¼ï¿½Ä£Ê½ï¿½Ç¶ï¿½Ì¬Ä£Ê½ï¿½ï¿½ï¿½É¸ï¿½ï¿½Ý·Ö±ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¬ï¿½Ä±ï¿½divï¿½ï¿½ï¿½Ö£ï¿½Ê¹ï¿½Ã»ï¿½ï¿½æ²»ï¿½ï¿½ï¿½Î¡ï¿½
 	if(width>height){
 		if(divWidth<divHeight){
-			//ÊúÆÁÇÐ»»µ½ºáÆÁÇé¿ö
+			//ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			GetID("AnyChatRemoteVideoDiv").style.width=(4.0/3*divHeight)+"px";
 			GetID("AnyChatRemoteVideoDiv").style.height=divHeight+"px";
 		}
 	}
 	else{
 		if(divWidth>divHeight){
-			//ºáÆÁÇÐ»»µ½ÊúÆÁÇé¿ö
+			//ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			GetID("AnyChatRemoteVideoDiv").style.width=(3.0/4*divHeight)+"px";
 			GetID("AnyChatRemoteVideoDiv").style.height=divHeight+"px";
 		}
