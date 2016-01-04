@@ -324,8 +324,8 @@ function BRAC_InitSDK(apilevel) {
 
 			// 录像文件临时目录设置（参数为字符串TCHAR类型，必须是完整的绝对路径）
 			// 图片文件临时目录设置（参数为字符串TCHAR类型，必须是完整的绝对路径）
-			BRAC_SetSDKOption(BRAC_SO_RECORD_TMPDIR, "D:/onlineinterview/video/");
-			BRAC_SetSDKOption(BRAC_SO_SNAPSHOT_TMPDIR, "D:/onlineinterview/picture/");
+			BRAC_SetSDKOption(BRAC_SO_RECORD_TMPDIR, "D:/interview/video");
+			BRAC_SetSDKOption(BRAC_SO_SNAPSHOT_TMPDIR, "D:/interview/picture");
 		} else {
 			document.body.removeChild(insertdiv);
 		}

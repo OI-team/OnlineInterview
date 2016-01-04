@@ -56,20 +56,21 @@ function ConfigAnyChatParameter(){
 }
 
 function InitInterfaceUI() {
+	//录像及拍照
 	GetID("AnyChatRecordBtn").onclick = function(){
 		if(GetID("record_value").value=="start"){
-			StartRecord();
+			BRAC_StreamRecordCtrl(-1,1,0,1);
 			GetID("record_value").value="end";
     		GetID("AnyChatRecordBtn").innerHTML="停止录制";
 		}
 		else{
-			EndRecord();
+			 BRAC_StreamRecordCtrl(-1,0,0,1);
 			GetID("record_value").value="start";
     		GetID("AnyChatRecordBtn").innerHTML="开始录制";
 		}
     }
     GetID("AnyChatSnapBtn").onclick = function(){
-    	Snap();
+    	BRAC_SnapShot(-1,BRAC_RECORD_FLAGS_SNAPSHOT,1);
     }
     GetID("setting").onclick = function () {
         if (GetID("setting_div").style.display == "block")
@@ -154,20 +155,7 @@ function InitInterfaceUI() {
     GetID("advanceset_div_close").onclick = function () {
         GetID("advanceset_div").style.display = "none";
     }
-    
-  //视频录像
-	GetID("record").onclick = function () {
-        BRAC_StreamRecordCtrl(-1,1,0,1);
-    }
-	//停止录像
-	 GetID("stoprecord").onclick = function () {
-        BRAC_StreamRecordCtrl(-1,0,0,1);
-    }
-	
-	//拍照
-	 GetID("takephoto").onclick = function () {
-        BRAC_SnapShot(-1,BRAC_RECORD_FLAGS_SNAPSHOT,1);
-    }
+
 }
 
 
