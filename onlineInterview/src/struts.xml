@@ -4,14 +4,12 @@
 	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
 <struts>
 	<!-- 用户 -->
-	<package name="struts2-teacher" extends="struts-default" namespace="/teacher">
-		
-	</package>
 	
 	<package name="struts2-admin" extends="struts-default" namespace="/admin">
 		
 	</package>
 	
 <include file="struts-student.xml" />
+<include file="struts-teacher.xml" />
 </struts> 
 

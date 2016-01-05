@@ -25,4 +25,7 @@
 	
 	<bean id="studentService" class="edu.nju.onlineInterview.service.StudentService">
 	</bean>
+	
+	<bean id="teacherService" class="edu.nju.onlineInterview.service.TeacherService">
+	</bean>
 </beans>

@@ -27,5 +27,11 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	
+	<bean id="recordDAO" class="edu.nju.onlineInterview.dao.RecordDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 
 </beans>

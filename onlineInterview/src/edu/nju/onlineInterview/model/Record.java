@@ -13,8 +13,8 @@ import javax.persistence.Table;
  * 
  * @author mzdong E-mail:mzdong163.com
  * @description the basic information of interview.
- * ×¢:Óëstudent¹ØÁªµÄÍâ¼ü²»ÖªµÀÔõÃ´´¦Àí£¬ÔÝÊ±Ï¹¸ã¡£
- * @date 2015Äê12ÔÂ8ÈÕ ÏÂÎç3:11:57
+ * ×¢:ï¿½ï¿½studentï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öªï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Ï¹ï¿½ã¡£
+ * @date 2015ï¿½ï¿½12ï¿½ï¿½8ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½3:11:57
  * @vesion 1.0
  */
 
@@ -43,6 +43,10 @@ public class Record implements Serializable{
 	private String comment;
 	private String snap;
 	private String video;
+	
+	public Record(){
+		
+	}
 	
 	public Record(Integer _id, Integer _sid, Float _score, String _comment, String _snap, String _video){
 		this.id = _id;
