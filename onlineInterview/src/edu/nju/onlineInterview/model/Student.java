@@ -66,7 +66,20 @@ public class Student implements Serializable{
 		number = _number;
 		phone = _phone;
 	}
-
+	/**
+	 * sunruiyang
+	 * add construction
+	 * @param add
+	 */
+	public Student( String _name, String _gender, String _school, String _major, Integer _rank, String _number, String _phone){
+		name = _name;
+		gender = _gender;
+		school = _school;
+		major = _major;
+		rank = _rank;
+		number = _number;
+		phone = _phone;
+	}
 	/**
 	 * simple construction
 	 * @param _name

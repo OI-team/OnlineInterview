@@ -16,6 +16,9 @@
 	<bean id="studentSignupAction" class="edu.nju.onlineInterview.action.StudentSignupAction">
 	</bean>
 	
+	<bean id="studentRegisterAction" class="edu.nju.onlineInterview.action.StudentRegisterAction">
+	</bean>
+	
 	<bean id="indexAction" class="edu.nju.onlineInterview.action.IndexAction">
 	</bean>
 	

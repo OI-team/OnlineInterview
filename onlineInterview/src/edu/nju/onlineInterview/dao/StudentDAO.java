@@ -12,6 +12,10 @@ public class StudentDAO extends BaseDAO<Student>{
 
 	private static final Logger log = LoggerFactory.getLogger(StudentDAO.class);
 	
+	/*
+	 * @author sunruiyang
+	 * @findStudentById
+	 */
 	public Student findStudentById(Integer id) {
 		log.debug("find student by id = " + id);
 		return findById(Student.class, id);
