@@ -82,7 +82,7 @@ function InitInterfaceUI() {
 		if(GetID("password").value == "密码可为空")
 			GetID("password").value = "";
         if (GetID("username").value != "") {
-            DisplayLoadingDiv(true);
+            //DisplayLoadingDiv(true);
             var errorcode = BRAC_Connect(GetID("ServerAddr").value, parseInt(GetID("ServerPort").value)); //���ӷ�����
             AddLog("BRAC_Connect(" + GetID("ServerAddr").value + "," + GetID("ServerPort").value + ")=" + errorcode, LOG_TYPE_API);
             errorcode = BRAC_Login(GetID("username").value, GetID("password").value, 0);
@@ -273,8 +273,8 @@ function ShowRoomDiv(bShow) {
 function EnterRoomRequest(roomid) {
 	var errorcode = BRAC_EnterRoom(roomid, "", 0); 
 	AddLog("BRAC_EnterRoom(" + roomid + ")=" + errorcode, LOG_TYPE_API);
-	if(errorcode == 0)
-		DisplayLoadingDiv(true);
+	// if(errorcode == 0)
+	// 	DisplayLoadingDiv(true);
 }
 
 function GetID(id) {

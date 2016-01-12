@@ -1,4 +1,4 @@
-﻿#LOADING_GREY_DIV{ display:none; background:rgba(0, 0, 0, 0.4) none repeat scroll 0 0 !important;filter:Alpha(opacity=40); width:100%; height:100%; background-color: #999999; position:absolute; z-index:44;}
+﻿#LOADING_GREY_DIV{ display:none; background:rgba(0, 0, 0, 0.4) none repeat scroll 0 0 !important;filter:Alpha(opacity=40); width:100%; height:100%; background-color: white; position:absolute; z-index:44;}
 #LOADING_DIV{ position:absolute; display:none; z-index:45;}
 #MAIN_DIV{ text-align:center; width:100%;}
 
