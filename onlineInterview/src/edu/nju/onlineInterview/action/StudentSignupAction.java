@@ -2,13 +2,13 @@ package edu.nju.onlineInterview.action;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.opensymphony.xwork2.Action;
-
+import edu.nju.onlineInterview.common.SessionConstant;
 import edu.nju.onlineInterview.model.Account;
 import edu.nju.onlineInterview.model.RoleType;
 import edu.nju.onlineInterview.model.Student;
 import edu.nju.onlineInterview.service.AccountService;
 import edu.nju.onlineInterview.service.StudentService;
+import edu.nju.onlineInterview.util.MD5Util;
 
 public class StudentSignupAction extends BaseAction{
 	/**
@@ -30,7 +30,7 @@ public class StudentSignupAction extends BaseAction{
 	public String execute(){
 		email = request.getParameter("email");
 		studentName = request.getParameter("studentName");
-		password = request.getParameter("password");
+		password = MD5Util.encrypt(password);
 		confirmPwd = request.getParameter("confirmPassword");
 		
 		Account account = new Account(email, password, RoleType.STUDENT.getDesc());
@@ -41,7 +41,7 @@ public class StudentSignupAction extends BaseAction{
 		}
 		Student student = new Student(accountId, studentName);
 		studentService.addStudent(student);
-		session.put("accountId", accountId);
+		session.put(SessionConstant.ACCOUNT_ID, accountId);
 		return SUCCESS;
 	}
 

@@ -21,4 +21,7 @@
 	
 	<bean id="teacherCheckAction" class="edu.nju.onlineInterview.action.TeacherCheckAction">
 	</bean>
+	
+	<bean id="adminLoginAction" class="edu.nju.onlineInterview.action.AdminLoginAction">
+	</bean>
 </beans>         

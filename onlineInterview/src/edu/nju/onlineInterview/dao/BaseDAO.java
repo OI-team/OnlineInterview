@@ -16,6 +16,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import javafx.scene.control.Pagination;
+
 /**
  * 
  * @author margine
@@ -141,6 +143,19 @@ public class BaseDAO<T> extends HibernateDaoSupport implements IBaseDAO<T> {
 			return null;
 		return (T) list.get(0);
 	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public T find(CharSequence queryString, Object... params) {
+		Query qry = getCurrentSession().createQuery(queryString.toString());  
+        for (int i = 0; i < params.length; ++i) {  
+            qry.setParameter(i, params[i]);  
+        }  
+        List list = qry.setMaxResults(1).list();  
+        if (list.isEmpty())  
+            return null;  
+        return (T) list.get(0);
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -157,6 +172,44 @@ public class BaseDAO<T> extends HibernateDaoSupport implements IBaseDAO<T> {
 	public List<T> findList(CharSequence queryString, Map<String, ? extends Object> params) {
 		Query query = getCurrentSession().createQuery(queryString.toString());
 		setParameter(query, params);
+		return query.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findByPage(int pageIndex, int pageSize, Map<String, ? extends Object> conditionMap) {
+		StringBuilder hql = new StringBuilder();
+		hql.append("from  " + entityClazz.getSimpleName());
+		if (!conditionMap.isEmpty()) {
+			Iterator<String> it = conditionMap.keySet().iterator();
+			String key = it.next();
+			hql.append(" where  " + key + "=:" + key);
+			while (it.hasNext()) {
+				key = it.next();
+				hql.append(" and  " + key + "=:" + key);
+			}
+			
+		}
+		Query query = getCurrentSession().createQuery(hql.toString());
+		query = setParameter(query, conditionMap);
+		if (pageSize > 0 && pageIndex > 0) {
+			query.setFirstResult((pageSize < 2) ? 0 : (pageIndex - 1) * pageSize);
+			query.setMaxResults(pageSize);
+		}
+		return query.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findByPage(int pageIndex, int pageSize, Object... params) {
+		Query query = getCurrentSession().createQuery("from  " + entityClazz.getSimpleName());
+		for (int i = 0; i < params.length; ++i) {
+			query.setParameter(i, params[i]);
+		}
+		if (pageSize > 0 && pageIndex > 0) {
+			query.setFirstResult((pageSize < 2) ? 0 : (pageIndex - 1) * pageSize);
+			query.setMaxResults(pageSize);
+		}
 		return query.list();
 	}
 
@@ -214,7 +267,7 @@ public class BaseDAO<T> extends HibernateDaoSupport implements IBaseDAO<T> {
 		}
 		return findList(hql.toString(), conditionMap);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findAll() {
@@ -222,10 +275,12 @@ public class BaseDAO<T> extends HibernateDaoSupport implements IBaseDAO<T> {
 	}
 
 	protected Query setParameter(Query query, Map<String, ? extends Object> parameterMap) {
-		for (@SuppressWarnings("rawtypes")
-		Iterator iterator = parameterMap.keySet().iterator(); iterator.hasNext();) {
-			String key = (String) iterator.next();
-			query.setParameter(key, parameterMap.get(key));
+		if (parameterMap != null && !parameterMap.isEmpty()) {
+			for (@SuppressWarnings("rawtypes")
+			Iterator iterator = parameterMap.keySet().iterator(); iterator.hasNext();) {
+				String key = (String) iterator.next();
+				query.setParameter(key, parameterMap.get(key));
+			}
 		}
 		return query;
 	}
@@ -239,7 +294,7 @@ public class BaseDAO<T> extends HibernateDaoSupport implements IBaseDAO<T> {
 	public Boolean isExist(String name, Object value) {
 		return findByProperty(name, value) == null ? false : true;
 	}
-
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 	private static final Logger log = LoggerFactory.getLogger(BaseDAO.class);

@@ -85,7 +85,7 @@ public class Account implements Serializable{
 	}
 	
 	@Column(name=ACCOUNT_TYPE)
-	public String geType(){
+	public String getType(){
 		return type;
 	}
 	

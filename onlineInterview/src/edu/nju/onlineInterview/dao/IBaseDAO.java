@@ -8,6 +8,8 @@ import java.util.Map;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
+import javafx.scene.control.Pagination;
+
 /**
  * 
  * @author margine
@@ -72,11 +74,34 @@ public interface IBaseDAO<T> {
 	public void saveOrUpdateAll(Collection<T> instances);
 
 	public T find(CharSequence queryString, Map<String, ? extends Object> params);
-
+	
+	public T find(CharSequence queryString, Object...params);
+	
 	public List<T> findList(CharSequence queryString, Object... params);
 
 	public List<T> findList(CharSequence queryString, Map<String, ? extends Object> params);
+	
+	/**
+	 * pagination search
+	 * @param pageIndex current page,  if pageIndex < 1, no pagination and return pageSize's records
+	 * @param pageSize
+	 * @param params optional params
+	 * @return
+	 */
+	@SuppressWarnings("hiding")
+	public List<T> findByPage(int pageIndex,  int pageSize, Object... params );
 
+	
+	/**
+	 * pagination search
+	 * @param pageIndex
+	 * @param pageSize
+	 * @param params
+	 * @return
+	 */
+	@SuppressWarnings("hiding")
+	public List<T> findByPage(int pageIndex, int pageSize, Map<String, ? extends Object> params);
+	
 	/**
 	 * get single instance by primary key
 	 * 
@@ -85,6 +110,8 @@ public interface IBaseDAO<T> {
 	 * @param id
 	 * @return instance
 	 */
+	
+	
 	public T findById(Class<T> clazz, Serializable id);
 
 	/**

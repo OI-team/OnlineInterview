@@ -136,19 +136,19 @@
 
 													<div class="space-6"></div>
 
-													<form>
+													<form name="loginForm" method="post" action="login">
 														<fieldset>
 															<hr class="hr-4"/>
 															<label class="block clearfix">
 																<span class="block input-icon input-icon-right">
-																	<input type="text" class="form-control" placeholder="账号" />
+																	<input name="email" type="text" class="form-control" placeholder="账号" />
 																	<i class="icon-user"></i>
 																</span>
 															</label>
 															<hr class="hr-12"/>
 															<label class="block clearfix">
 																<span class="block input-icon input-icon-right">
-																	<input type="password" class="form-control" placeholder="密码" />
+																	<input name="password" type="password" class="form-control" placeholder="密码" />
 																	<i class="icon-lock"></i>
 																</span>
 															</label>
@@ -161,7 +161,7 @@
 																	<span class="lbl"> 记住我</span>
 																</label>
 
-																<button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+																<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
 																	<i class="icon-key"></i>
 																	登录
 																</button>
@@ -182,7 +182,7 @@
 															</div>
 
 															<div class="col-sm-6">
-																<a href="signup.html" class="user-signup-link pull-right">
+																<a href="signup.jsp" class="user-signup-link pull-right">
 																	注册
 																	<i class="icon-arrow-right"></i>
 																</a>

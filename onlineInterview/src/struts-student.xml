@@ -5,7 +5,8 @@
 <struts>
 	<package name="struts2-student" extends="struts-default">
 		<action name="login" class="studentLoginAction">
-			<result>/studentLogin.jsp</result>
+			<result name="success" type="chain">index</result>
+			<result name="error" type="redirect">/signup.jsp</result>
 		</action>
 		
 		<action name="signup" class="studentSignupAction">
@@ -16,6 +17,10 @@
 		
 		<action name="index" class="indexAction">
 			<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name="logout" class="studentLoginAction" method="logOut">
+			<result name="success" type="chain">index</result>
 		</action>
 		
 	</package>

@@ -5,11 +5,8 @@
 <struts>
 	<!-- 用户 -->
 	
-	<package name="struts2-admin" extends="struts-default" namespace="/admin">
-		
-	</package>
-	
 <include file="struts-student.xml" />
 <include file="struts-teacher.xml" />
+<include file="struts-admin.xml" />
 </struts> 
 

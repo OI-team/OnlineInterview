@@ -6,7 +6,7 @@
 	<display-name>onlineInterview</display-name>
 
 	<welcome-file-list>
-		<welcome-file>/signup.jsp</welcome-file>
+		<welcome-file>/admin/login.jsp</welcome-file>
 	</welcome-file-list>
 
 	<listener>

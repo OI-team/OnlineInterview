@@ -1,11 +1,16 @@
 package edu.nju.onlineInterview.service;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
+import edu.nju.onlineInterview.dao.AccountDAO;
 import edu.nju.onlineInterview.dao.StudentDAO;
 import edu.nju.onlineInterview.model.Account;
 import edu.nju.onlineInterview.model.Student;
+import edu.nju.onlineInterview.vo.StudentBriefInfoVO;
 
 /**
  * 
@@ -18,6 +23,9 @@ public class StudentService {
 
 	@Autowired
 	private StudentDAO studentDAO;
+	
+	@Autowired
+	private AccountDAO accountDAO;
 
 	/**
 	 * verify studentInformation
@@ -57,4 +65,18 @@ public class StudentService {
 		studentDAO.update(student);
 		return true;
 	}
+	
+	public List<StudentBriefInfoVO> getStudentBriefInfoList(int pageIndex, int pageSize){
+		List<Student> students = studentDAO.findByPage(pageIndex, pageSize);
+		List<StudentBriefInfoVO> results = new ArrayList<>();
+		if (students != null && students.size() > 0) {
+			for(Student one : students){
+				Account account = accountDAO.findByProperty(Account.ACCOUNT_ID, one.getAccountId());
+				StudentBriefInfoVO info = new StudentBriefInfoVO(one.getName(), account.getName(), one.getSchool());
+				results.add(info);
+			}
+		}
+		return results;
+	}
+	
 }

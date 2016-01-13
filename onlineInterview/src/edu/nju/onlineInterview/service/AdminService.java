@@ -1,18 +1,28 @@
 package edu.nju.onlineInterview.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import edu.nju.onlineInterview.common.FileConstant;
+import edu.nju.onlineInterview.common.HeaderConstant;
 import edu.nju.onlineInterview.dao.AccountDAO;
 import edu.nju.onlineInterview.dao.AdminDAO;
 import edu.nju.onlineInterview.dao.StudentDAO;
 import edu.nju.onlineInterview.model.Account;
 import edu.nju.onlineInterview.model.Student;
+import edu.nju.onlineInterview.util.ExcelUtil;
+import edu.nju.onlineInterview.util.FileUtil;
 
 /**
  * 
  * @author mzdong E-mail:mzdong163.com
  * @description TO achieve the operation of business logic of manager
- * @date 2015Äê12ÔÂ8ÈÕ ÉÏÎç10:06:00
+ * @date 2015ï¿½ï¿½12ï¿½ï¿½8ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½10:06:00
  * @vesion 1.0
  */
 
@@ -61,8 +71,40 @@ public class AdminService {
 	 * @param
 	 * @return
 	 */
-	public boolean downloadRecord(){
-		return false;
+	public boolean downloadRecords(HttpServletResponse response){
+		FileUtil.ZipFile(FileConstant.RECORDS_ZIP, FileConstant.STUDENT_DIR);
+		FileUtil.Download(response, FileConstant.RECORD_FPRMAT_PATH);
+		return true;
 	}
-
+	
+	public void downloadStuInfo(HttpServletResponse response, String absolutepath){
+		generateStuInfoExcel();
+		FileUtil.Download(response, absolutepath);
+	}
+	
+	private boolean generateStuInfoExcel(){
+		if (!FileUtil.isFileExist(FileConstant.STUDENT_INFO_PATH)) {
+			String[] headers = new String[]{HeaderConstant.ID, HeaderConstant.NAME, HeaderConstant.GENDER, HeaderConstant.SCHOOL, HeaderConstant.MAJOR,HeaderConstant.NUM, HeaderConstant.RANK, HeaderConstant.PHONE};
+			String savePath = FileConstant.ADMIN_DIR;
+			
+			List<Map<String, String>> contents = new ArrayList<>();
+			ArrayList<Student> students = (ArrayList<Student>) studentDAO.findAll();
+			if (students != null && !students.isEmpty()) {
+				for(int i = 0; i< students.size(); i++){
+					Student one = students.get(i);
+					Map<String, String> map = new HashMap<>();
+					map.put(HeaderConstant.ID, String.valueOf(i+1));
+					map.put(HeaderConstant.NAME, one.getName());
+					map.put(HeaderConstant.GENDER, one.getGender());
+					map.put(HeaderConstant.MAJOR, one.getMajor());
+					map.put(HeaderConstant.NUM, one.getNumber());
+					map.put(HeaderConstant.PHONE, one.getPhone());
+					map.put(HeaderConstant.RANK, String.valueOf(one.getRank()));
+					contents.add(map);
+				}
+			}
+			ExcelUtil.createExcel(savePath, FileConstant.STUDENT_INFO, headers, contents);
+		}
+		return true;
+	}
 }

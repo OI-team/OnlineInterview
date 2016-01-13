@@ -106,11 +106,11 @@ public class Student implements Serializable{
 	}
 
 	@Column(name=STU_GENDER)
-	public String getSex() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setSex(String gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
