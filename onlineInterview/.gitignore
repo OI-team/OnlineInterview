@@ -1,6 +1,19 @@
 /build/
 
-*.classpath
-.project
-.settings/
+*
+/.classpath
+
+/.project
+
+/.settings
+/
 *.classs
+
+/web-app/WEB-INF/classes
+
+# .gitignore for eclipse
+.project
+.metadata
+.settings/
+.classpath
+jdbc.properties

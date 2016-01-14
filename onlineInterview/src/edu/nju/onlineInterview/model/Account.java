@@ -10,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import org.apache.commons.io.filefilter.FalseFileFilter;
-
 /**
  * 
  * @author margine

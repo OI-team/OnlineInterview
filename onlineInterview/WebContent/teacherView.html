@@ -64,17 +64,49 @@
 				</div><!-- /.navbar-header -->
 
 				<div class="navbar-header pull-right" role="navigation">
-					<ul class="nav ace-nav">												
+					<ul class="nav ace-nav">				
+						<li class="purple">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<i class="icon-bell-alt icon-animated-bell"></i>
+								<span class="badge badge-important">1</span>
+							</a>
+
+							<ul class="pull-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+								<li class="dropdown-header">
+									<i class="icon-warning-sign"></i>
+									1条通知
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-pink icon-comment"></i>
+												您在10：00有面试哦！
+											</span>											
+										</div>
+									</a>
+								</li>
+
+								
+							</ul>
+						</li>								
 						<li class="light-blue" style="position:relative;left:0px">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<!-- <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" /> -->
 								<span class="user-info">
 									<small>Welcome,</small>
-									Jason
+									蔡慧
 								</span>
 								<i class="icon-caret-down"></i>
 							</a>	
 							<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+								<li>
+									<a href="#">
+										<i class="icon-user"></i>
+										个人中心
+									</a>
+								</li>
 								<li>
 									<a href="#">
 										<i class="icon-off"></i>
@@ -89,94 +121,151 @@
 		</div>
 
 		<div class="main-container" id="main-container">
-			<script type="text/javascript">
-				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
-			</script>
-
-			<div class="main-container-inner">
-				<a class="menu-toggler" id="menu-toggler" href="#">
-					<span class="menu-text"></span>
-				</a>
-
-				<div class="sidebar" id="sidebar">
-					<script type="text/javascript">
-						try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
-					</script>
-
-					<div class="sidebar-shortcuts" id="sidebar-shortcuts" style="height:41px">
-						
-					</div><!-- #sidebar-shortcuts -->
-
-					<ul class="nav nav-list">
-						<li class="active open">
-							<a href="#" class="dropdown-toggle">
-								<i class="icon-dashboard"></i>
-								<span class="menu-text"> 面试系统 </span>
-								<!-- <b class="arrow icon-angle-down"></b> -->
-							</a>
-
-							<ul class="submenu">
-								<li class="active">
-									<a href="">
-										<i class="icon-double-angle-right"></i>
-										在线面试
-									</a>
-								</li>
-
-								<li>
-									<a href="studentInfo.html">
-										<i class="icon-double-angle-right"></i>
-										个人中心
-									</a>
-								</li>								
-							</ul>
-						</li>						
-					</ul><!-- /.nav-list -->
-
-					<div class="sidebar-collapse" id="sidebar-collapse">
-						<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
-					</div>
-
-					<script type="text/javascript">
-						try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
-					</script>
-				</div>
-
-				<div class="main-content">
-					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
-
-						<ul class="breadcrumb">
-							<li>
-								<i class="icon-home home-icon"></i>
-								<a href="#">主页</a>
-							</li>
-							<li class="active">在线面试</li>
-						</ul><!-- .breadcrumb -->
-						
-					</div>
-
-					<div class="page-content">
-						<div class="page-header">
+		    <div class="main-container-inner">
+		    	
+					<div class="hr-32" ></div>
+					<div class="">
+						<div class="col-sm-1">
+						</div>
+						<div class="col-sm-10">
+							<div class="row" style="">
+								<div class="page-content">
+									<div class="page-header">
+										<h1 class="center">
+											在线面试
+											<small>
+												<i class="icon-double-angle-right"></i>
+												<a href="room.html">返回大厅</a>
+											</small>
+										</h1>
+									</div><!-- /.page-header -->
+									<div class="row">
+										
+										<div class="col-xs-12">
+											<div class="col-xs-3">
+												<div style="border:1px black solid;height:360px;position:relative;">
+													学生列表
+												</div>
+											</div>
+											<div class="col-xs-6" >
+												<div style="border:1px black solid;height:360px">
+													学生窗口
+												</div>
+											</div>	
+											<div class="col-xs-3">
+												<div style="border:1px black solid;height:200px;position:relative;top:160px">
+													教师窗口
+												</div>
+											</div>	
+																				
+										</div>
+									</div>
+									<div class="hr-6"></div>
+									<div class="row">
+										
+										<div class="col-xs-12">
+											<div class="col-xs-3">
+												
+											</div>
+											<div class="col-xs-6" >
+												<button class="btn btn-success">
+													快照截取
+												</button>
+												<button class="btn btn-success">
+													开始录制
+												</button>
+												<button class="btn btn-success">
+													停止录制
+												</button>
+											</div>	
+											<div class="col-xs-3">
+												
+											</div>	
+																				
+										</div>
+									</div>
+									<div class="hr-18"></div>
+									<div class="row">
+										
+										<div class="col-xs-12">
+											<div class="col-xs-3">
+												
+											</div>
+											<div class="col-xs-6" >
+												<div>
+													<div style="float:left">
+														<font size="5"><b>评分 ：</b></font>
+													</div>
+													<div style="position:relative;top:4px;left:10px">
+														<input type="text" class="input-medium" id="spinner1" />
+													</div>	
+													<div style="clear:both"></div>											
+												</div>
+												<div>
+													<div style="float:left">
+														<font size="5"><b>评价 ：</b></font>
+													</div>
+													<div style="position:relative;top:4px;left:10px">
+														<textarea  id="" style="width:430px;height:160px"></textarea>
+													</div>
+													<div style="clear:both"></div>	
+												</div>												
+											<div class="col-xs-3">
+												
+											</div>	
+																				
+										</div>
+									</div>
+									<div class="hr-18"></div>
+									<div class="row">
+										
+										<div class="col-xs-12">
+											<div class="col-xs-3">
+												
+											</div>
+											<div class="col-xs-6" style="position:relative;left:94px;top:10px">
+												<button class="btn btn-primary">
+													保存
+												</button>												
+											</div>	
+											<div class="col-xs-3">
+												
+											</div>	
+																				
+										</div>
+									</div>
+									
+								</div><!-- /.page-content -->
+							</div>
 							
-						</div><!-- /.page-header -->
-						<div class="row">
-							<div class="col-xs-12">
-								
+							<hr style="height:1px;border:none;border-top:1px solid #555555;" />
+							<div class="row">
+								<div class="col-sm-4">
+								</div>
+								<div class="col-sm-4" style="position:relative;left:50px">
+									<a href="">联系我们</a> &nbsp;&nbsp;| &nbsp;&nbsp; <a href="">院务信箱</a> &nbsp;&nbsp;| &nbsp;&nbsp; <a href="">教务信箱</a>
+								</div>
+								<div class="col-sm-4">
+								</div>
+							</div>
+							<div class="hr-12" ></div>
+							<div class="row">
+								<div class="col-sm-4">
+								</div>
+								<div class="col-sm-4" style="position:relative;left:42px">
+									Copyright@南京大学软件学院 2002-2015
+								</div>
+								<div class="col-sm-4">
+								</div>
 							</div>
 						</div>
-					</div><!-- /.page-content -->
-				</div><!-- /.main-content -->
-
+						<div class="col-sm-1">
+						</div>
+						
+					</div>
 				
-			</div><!-- /.main-container-inner -->
-
-			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-				<i class="icon-double-angle-up icon-only bigger-110"></i>
-			</a>
-		</div><!-- /.main-container -->
+			</div>		
+		</div>
 
 		<!-- basic scripts -->
 
@@ -424,7 +513,7 @@
 			
 			
 			
-				$('#spinner1').ace_spinner({value:0,min:0,max:200,step:10, btn_up_class:'btn-info' , btn_down_class:'btn-info'})
+				$('#spinner1').ace_spinner({value:0,min:0,max:10,step:1, btn_up_class:'btn-info' , btn_down_class:'btn-info'})
 				.on('change', function(){
 					//alert(this.value)
 				});

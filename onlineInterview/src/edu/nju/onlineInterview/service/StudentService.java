@@ -1,11 +1,9 @@
 package edu.nju.onlineInterview.service;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import edu.nju.onlineInterview.dao.AccountDAO;
 import edu.nju.onlineInterview.dao.StudentDAO;
 import edu.nju.onlineInterview.model.Account;
@@ -41,10 +39,7 @@ public class StudentService {
 	 */
 	
 	public int addStudent(Student student) {
-		if (!studentDAO.isExist(Account.ACCOUNT_ID, student.getAccountId()))
 			return (int) studentDAO.save(student);
-		else
-			return -1;
 	}
 	
 	public Student findStudent(Integer studentId){

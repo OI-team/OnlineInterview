@@ -9,13 +9,19 @@
 			<result name="error" type="redirect">/signup.jsp</result>
 		</action>
 		
-		<action name="signup" class="studentSignupAction">
+		<action name="signup" class="edu.nju.onlineInterview.action.StudentSignupAction">
 			<result name="input" type="redirect">/signup.jsp</result>
 			<result name="success" type="chain">index</result>
 			<result name="error" type="redirect">/signup.jsp</result>
 		</action>
 		
-		<action name="index" class="indexAction">
+		<action name="studentInfo" class="edu.nju.onlineInterview.action.StudentRegisterAction">
+			<result name="input" type="redirect">/studentInfo.jsp</result>
+			<result name="success" type="redirect">index</result>
+			<result name="error" type="redirect">/studentInfo.jsp</result>
+		</action>
+		
+		<action name="index" class="edu.nju.onlineInterview.action.IndexAction">
 			<result name="success">/index.jsp</result>
 		</action>
 		

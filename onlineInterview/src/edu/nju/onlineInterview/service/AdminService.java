@@ -5,15 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.nju.onlineInterview.common.FileConstant;
 import edu.nju.onlineInterview.common.HeaderConstant;
-import edu.nju.onlineInterview.dao.AccountDAO;
-import edu.nju.onlineInterview.dao.AdminDAO;
 import edu.nju.onlineInterview.dao.StudentDAO;
-import edu.nju.onlineInterview.model.Account;
 import edu.nju.onlineInterview.model.Student;
 import edu.nju.onlineInterview.util.ExcelUtil;
 import edu.nju.onlineInterview.util.FileUtil;

@@ -36,6 +36,75 @@
 		<script src="assets/js/html5shiv.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
+		<style>
+			.flexslider {
+				margin: 0px auto 20px;
+				position: relative;
+				width: 100%;
+				height: 482px;
+				overflow: hidden;
+				zoom: 1;
+			}
+
+			.flexslider .slides li {
+				width: 100%;
+				height: 100%;
+			}
+
+			.flexslider:hover .flex-next {
+				opacity: 0.8;
+				filter: alpha(opacity=25);
+			}
+
+			.flexslider:hover .flex-prev {
+				opacity: 0.8;
+				filter: alpha(opacity=25);
+			}
+
+			.flexslider:hover .flex-next:hover,
+			.flexslider:hover .flex-prev:hover {
+				opacity: 1;
+				filter: alpha(opacity=50);
+			}
+
+			.flex-control-nav {
+				width: 100%;
+				position: absolute;
+				bottom: 10px;
+				text-align: center;
+			}
+
+			.flex-control-nav li {
+				margin: 0 2px;
+				display: inline-block;
+				zoom: 1;
+				*display: inline;
+			}
+
+			.flex-control-paging li a {
+				background: url(images/dot.png) no-repeat 0 -16px;
+				display: block;
+				height: 16px;
+				overflow: hidden;
+				text-indent: -99em;
+				width: 16px;
+				cursor: pointer;
+				position: relative;
+				left: -20px;
+				top: 10px
+			}
+
+			.flex-control-paging li a.flex-active,
+			.flex-control-paging li.active a {
+				background-position: 0 0;
+			}
+
+			.flexslider .slides a img {
+				width: 100%;
+				height: 482px;
+				display: block;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -54,17 +123,15 @@
 					</a><!-- /.brand -->
 				</div><!-- /.navbar-header -->
 
-				<div class="navbar-header pull-right" role="navigation">
-					<ul class="nav ace-nav">
-						<!-- <li class="purple">
-							<a href="">登录.注册</a>
-						</li> -->
-
-						<!-- <li class="green">
-							<a href="login.html">登录.注册</a>
-						</li> -->
-
-					</ul>
+				<div class="navbar-header pull-right">
+					<a href="signup.html" class="navbar-brand" style="position:relative;left:-50px">
+						<font size="3">注册</font>						
+					</a>
+				</div>
+				<div class="navbar-header pull-right">
+					<a href="login.html" class="navbar-brand" style="position:relative;left:-50px">
+						<font size="3">登陆</font>						
+					</a>
 				</div>
 			</div>
 		</div>
@@ -121,79 +188,36 @@
 								<div class="col-sm-1">
 								</div>
 								<div class="col-sm-4" style="position:relative;left:-10px">
-									<div class="row" style="position:relative;top:32px;height:334px;border:5px ridge #ACD6FF;background-color:#f0f0f0">
-										<div class="col-sm-2">
-										</div>
-										<div class="col-sm-8">
-											<div class="row">
-												<div class="widget-main">
-													<h4 class="header blue lighter bigger">
-														<i class="icon-coffee green"></i>
-														请输入你的信息
-													</h4>
-
-													<div class="space-6"></div>
-
-													<form>
-														<fieldset>
-															<hr class="hr-4"/>
-															<label class="block clearfix">
-																<span class="block input-icon input-icon-right">
-																	<input type="text" class="form-control" placeholder="账号" />
-																	<i class="icon-user"></i>
-																</span>
-															</label>
-															<hr class="hr-12"/>
-															<label class="block clearfix">
-																<span class="block input-icon input-icon-right">
-																	<input type="password" class="form-control" placeholder="密码" />
-																	<i class="icon-lock"></i>
-																</span>
-															</label>
-
-															<div class="space"></div>
-
-															<div class="clearfix">
-																<label class="inline">
-																	<input type="checkbox" class="ace" />
-																	<span class="lbl"> 记住我</span>
-																</label>
-
-																<button type="button" class="width-35 pull-right btn btn-sm btn-primary">
-																	<i class="icon-key"></i>
-																	登录
-																</button>
-															</div>
-
-															<div class="space-4"></div>
-														</fieldset>
-													</form>
-													<div class="toolbar clearfix">
-														<hr class="hr-8"/>
-														<div class="row">
-															
-															<div class="col-sm-6">
-																<a href="forget.html" class="forgot-password-link pull-left">
-																	<i class="icon-arrow-left"></i>
-																	忘了密码
-																</a>
-															</div>
-
-															<div class="col-sm-6">
-																<a href="signup.html" class="user-signup-link pull-right">
-																	注册
-																	<i class="icon-arrow-right"></i>
-																</a>
-															</div>
-															
-														</div>
-													</div>
+									<div class="row" >
+										
+										
+												<div id="banner_tabs" class="flexslider" style="height:360px;position:relative;top:8px">
+													<ul class="slides">
+														<li>
+															<a title="" target="_blank" href="#">
+																<img width="1920" height="482" alt="" style="background: url(images/banner1.jpg) no-repeat center;" src="images/alpha.png">
+															</a>
+														</li>
+														<li>
+															<a title="" href="#">
+																<img width="1920" height="482" alt="" style="background: url(images/banner2.jpg) no-repeat center;" src="images/alpha.png">
+															</a>
+														</li>
+														<li>
+															<a title="" href="#">
+																<img width="1920" height="482" alt="" style="background: url(images/banner3.jpg) no-repeat center;" src="images/alpha.png">
+															</a>
+														</li>
+													</ul>
 													
+													<ol id="bannerCtrl" class="flex-control-nav flex-control-paging">
+														<li><a>1</a></li>
+														<li><a>2</a></li>
+														<li><a>2</a></li>
+													</ol>
 												</div>
-											</div>
-										</div>
-										<div class="col-sm-2">
-										</div>
+											
+										
 									</div>
 								</div>
 							</div>
@@ -272,9 +296,25 @@
 		<script src="assets/js/ace.min.js"></script>
 
 		<!-- inline scripts related to this page -->
-
+		<script src="js/slider.js"></script>
 		<script type="text/javascript">
-			
+			$(function() {
+				var bannerSlider = new Slider($('#banner_tabs'), {
+					time: 5000,
+					delay: 400,
+					event: 'hover',
+					auto: true,
+					mode: 'fade',
+					controller: $('#bannerCtrl'),
+					activeControllerCls: 'active'
+				});
+				$('#banner_tabs .flex-prev').click(function() {
+					bannerSlider.prev()
+				});
+				$('#banner_tabs .flex-next').click(function() {
+					bannerSlider.next()
+				});
+			})
 			
 		</script>
 

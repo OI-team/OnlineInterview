@@ -5,11 +5,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.annotation.Transactional;
-
-import javafx.scene.control.Pagination;
-
 /**
  * 
  * @author margine
@@ -88,7 +83,6 @@ public interface IBaseDAO<T> {
 	 * @param params optional params
 	 * @return
 	 */
-	@SuppressWarnings("hiding")
 	public List<T> findByPage(int pageIndex,  int pageSize, Object... params );
 
 	
@@ -99,7 +93,6 @@ public interface IBaseDAO<T> {
 	 * @param params
 	 * @return
 	 */
-	@SuppressWarnings("hiding")
 	public List<T> findByPage(int pageIndex, int pageSize, Map<String, ? extends Object> params);
 	
 	/**
