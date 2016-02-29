@@ -3,7 +3,7 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
 	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
 <struts>
-	<package name="struts2-admin" extends="struts-default" namespace="/admin">
+	<package name="struts2-admin" extends="struts-default,json-default" namespace="/admin">
 		<action name="adminLogin" class="adminLoginAction">
 			<result name="success" type="chain">adminIndex</result>
 			<result name="error" type="redirect">/admin/login.jsp</result>
@@ -13,11 +13,26 @@
 			<result name="success">/admin/index.jsp</result>
 		</action>
 		
-		<action name="adminLogout" class="studentLoginAction" method="logOut">
+		<action name="adminLogout" class="studentLoginAction" method="logout">
 			<result name="success" type="chain">adminIndex</result>
 		</action>
 		
-		<action name="listRegister" class="adminManageAction" method="loadStudentList">
+		<action name="listStudents" class="adminManageAction" method="loadStudentList">
+			<result name="success" type="json" >infoJson</result>
+		</action>
+		
+		<action name="uploadArrange" class="adminManageAction" method="uploadArrange">
+			<result name="success">adminIndex</result>
+			<result name="error">upload error</result>
+		</action>
+		
+		<action name="teacherManage" class="adminManageAction" method="teacherManage">
+			<result name="success">adminIndex</result>
+		</action>
+		
+		<action name="downloadRecords" class="adminManageAction" method="downloadRecords">
+			<result name="success">adminIndex</result>
+			<result name="error">download error</result>
 		</action>
 	</package>
 </struts>

@@ -14,7 +14,9 @@ import edu.nju.onlineInterview.service.AdminService;
 import edu.nju.onlineInterview.service.StudentService;
 import edu.nju.onlineInterview.util.FileUtil;
 import edu.nju.onlineInterview.util.MD5Util;
-import edu.nju.onlineInterview.vo.StudentBriefInfoVO;
+import edu.nju.onlineInterview.vo.StudentBriefInfoVO;import jdk.nashorn.internal.ir.BreakableNode;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 /**
  * @author mzdong E-mail:mzdong163.com
@@ -46,9 +48,14 @@ public class AdminManageAction extends BaseAction{
 	}
 
 	public String loadStudentList(){
-		int pageIndex = Integer.valueOf(request.getParameter("page"));
-		int pageSize = Integer.valueOf(request.getParameter("pageSize"));
+		String indexValue = request.getParameter("page");
+		String sizeValue = request.getParameter("pageSize");
+		
+		int pageIndex = indexValue == null ? 1 : Integer.valueOf(indexValue);
+		int pageSize = sizeValue == null ? 5 : Integer.valueOf(pageIndex) ;
 		briefInfo = studentService.getStudentBriefInfoList(pageIndex, pageSize);
+		
+		JSONArray object = JSONArray.fromObject(briefInfo);
 		if (briefInfo != null) {
 			return SUCCESS;
 		}
@@ -57,6 +64,7 @@ public class AdminManageAction extends BaseAction{
 
 	public String downloadStudents(){
 		String curPath = request.getSession().getServletContext().getRealPath("/");
+		System.out.println(curPath);
 		String fatherPath = new File(curPath).getParent();
 		String absolutepath = fatherPath + FileConstant.STUDENT_INFO_PATH;
 		adminService.downloadStuInfo(response, absolutepath);

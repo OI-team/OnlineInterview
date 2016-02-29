@@ -269,7 +269,7 @@ public class BaseDAO<T> extends HibernateDaoSupport implements IBaseDAO<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findAll() {
-		return getCurrentSession().createQuery("from " + entityClazz.getName()).list();
+		return getCurrentSession().createQuery("from " + entityClazz.getSimpleName()).list();
 	}
 
 	protected Query setParameter(Query query, Map<String, ? extends Object> parameterMap) {
