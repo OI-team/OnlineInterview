@@ -1,6 +1,6 @@
 // AnyChat for Web SDK
  
-var mDefaultServerAddr = "demo.anychat.cn"   //"192.168.191.4"  default server addressַ
+var mDefaultServerAddr = "demo.anychat.cn"   //"192.168.191.4"  default server addressַ  demo.anychat.cn
 var mDefaultServerPort = 8906;					// default server port
 var mSelfUserId = -1; 							// local userID
 var mTargetUserId = -1;							// target userID
@@ -57,20 +57,20 @@ function ConfigAnyChatParameter(){
 
 function InitInterfaceUI() {
 	//录像及拍照
-	GetID("AnyChatRecordBtn").onclick = function(){
-		if(GetID("record_value").value=="start"){
-			BRAC_StreamRecordCtrl(-1,1,0,1);
-			GetID("record_value").value="end";
-    		GetID("AnyChatRecordBtn").innerHTML="停止录制";
+	GetID("TakeRecord").onclick = function(){
+		if(GetID("record_control").value=="start"){
+			BRAC_StreamRecordCtrl(mTargetUserId,1,0,1);
+			GetID("record_control").value="end";
+    		GetID("TakeRecord").innerHTML="停止录制";
 		}
 		else{
-			 BRAC_StreamRecordCtrl(-1,0,0,1);
-			GetID("record_value").value="start";
-    		GetID("AnyChatRecordBtn").innerHTML="开始录制";
+			 BRAC_StreamRecordCtrl(mTargetUserId,0,0,1);
+			GetID("record_control").value="start";
+    		GetID("TakeRecord").innerHTML="开始录制";
 		}
     }
-    GetID("AnyChatSnapBtn").onclick = function(){
-    	BRAC_SnapShot(-1,BRAC_RECORD_FLAGS_SNAPSHOT,1);
+    GetID("TakePhoto").onclick = function(){
+    	BRAC_SnapShot(mTargetUserId,BRAC_RECORD_FLAGS_SNAPSHOT,1);
     }
     GetID("setting").onclick = function () {
         if (GetID("setting_div").style.display == "block")
@@ -160,7 +160,7 @@ function InitInterfaceUI() {
 
 
 function PasswordFocus(obj,color){
-	if(obj.value=="�����Ϊ��")
+	if(obj.value=="密码可为空")
 		obj.value="";
 	obj.type="password";
 	obj.style.backgroundColor=color;
@@ -207,7 +207,7 @@ function DisplayTextMessage(fromuserid, message) {
 
 	var msgdiv = document.createElement("div");
 	msgdiv.setAttribute("class", "TheMsgStyle");
-	msgdiv.innerHTML = namestr + "��&nbsp&nbsp" + message;
+	msgdiv.innerHTML = namestr + "：&nbsp&nbsp" + message;
 //	GetID("ReceiveMsgDiv").appendChild(msgdiv);
 //	DisplayScroll("ReceiveMsgDiv");
 }
@@ -303,15 +303,18 @@ function RequestOtherUserVideo(userid) {
 		reVideoDivSize();
         BRAC_UserCameraControl(mTargetUserId, 0);
         BRAC_UserSpeakControl(mTargetUserId, 0);
+		BRAC_TransBuffer(mTargetUserId,"goodbye");
     }
     GetID(userid + "_MicrophoneTag").src = "./images/advanceset/microphone_true.png"; 
     GetID(userid + "_UserDiv").style.backgroundColor = "#E6E6E6"; 
 
     mTargetUserId = userid; 					
     BRAC_UserCameraControl(userid, 1); 		
-    BRAC_UserSpeakControl(userid, 1); 		
+    BRAC_UserSpeakControl(userid, 1);
+    document.getElementById("studentid").value=userid;
     BRAC_SetVideoPos(userid, GetID("AnyChatRemoteVideoDiv"), "ANYCHAT_VIDEO_REMOTE");
     MicrophoneOnclick(userid); 
+	BRAC_TransBuffer(userid,"hello");
 }
 
 function RoomUserListControl(userid, bInsert) {
@@ -330,7 +333,7 @@ function RoomUserListControl(userid, bInsert) {
         
         if (userid == mSelfUserId) {
             AddImage(itemdiv, mSelfUserId + "_MicrophoneTag", "mSelfMicrophoneTag", "./images/advanceset/microphone_true.png", userid); 
-            itemdiv.innerHTML += "&nbsp" + BRAC_GetUserName(mSelfUserId) + "(�Լ�)";
+            itemdiv.innerHTML += "&nbsp" + BRAC_GetUserName(mSelfUserId) + "(自己)";
         } else {
             AddImage(itemdiv, userid + "_MicrophoneTag", "MicrophoneTag", "./images/advanceset/microphone_false.png", userid);
             
@@ -401,16 +404,16 @@ function AddImage(parent_id, img_id, img_class, fir_img, userid) {
 }
 
 function MicrophoneOnclick(userid) {
-    GetID(userid + "_MicrophoneTag").style.cursor = "pointer"; // �����״
-    GetID(userid + "_MicrophoneTag").onclick = function () { // ��Ͳ����¼�
+    GetID(userid + "_MicrophoneTag").style.cursor = "pointer";
+    GetID(userid + "_MicrophoneTag").onclick = function () { 
         var ImgPath = GetID(userid + "_MicrophoneTag").src.split('/');
         if (ImgPath[ImgPath.length - 1] == "microphone_true.png") {
             GetID(userid + "_MicrophoneTag").src = "./images/advanceset/microphone_false.png";
-            BRAC_UserSpeakControl(userid, 0); // �ر�����
+            BRAC_UserSpeakControl(userid, 0); 
         }
         else {
             GetID(userid + "_MicrophoneTag").src = "./images/advanceset/microphone_true.png";
-            BRAC_UserSpeakControl(userid, 1); // ��������
+            BRAC_UserSpeakControl(userid, 1); 
         }
     }
 }

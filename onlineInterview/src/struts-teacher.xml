@@ -5,8 +5,7 @@
 <struts>
 	<package name="struts2-teacher" extends="struts-default">
 		<action name="addRecord" class="teacherCheckAction" method="addRecord">
-			<result name="success">/teacherView.jsp</result>
-			<result name="error">/teacherView.jsp</result>
+			
 		</action>
 		
 	</package>

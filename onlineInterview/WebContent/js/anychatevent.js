@@ -91,6 +91,10 @@ function OnAnyChatLoginSystem(dwUserId, errorcode) {
 		ConfigAnyChatParameter();
 		mSelfUserId = dwUserId;	
 		ShowHallDiv(true);
+		// 录像文件临时目录设置（参数为字符串TCHAR类型，必须是完整的绝对路径）
+			// 图片文件临时目录设置（参数为字符串TCHAR类型，必须是完整的绝对路径）
+			BRAC_SetSDKOption(BRAC_SO_RECORD_TMPDIR, "D:/interview/video");
+			BRAC_SetSDKOption(BRAC_SO_SNAPSHOT_TMPDIR, "D:/interview/picture");
     } else {
 		ShowHallDiv(false);
     }
@@ -131,13 +135,6 @@ function OnAnyChatRoomOnlineUser(dwUserCount, dwRoomId) {
 	for (var i = 0; i < useridlist.length; i++) {
 		RoomUserListControl(useridlist[i], true);
     }
-	// ��������һ���û�������Ƶ
-	for (var k=0; k<useridlist.length; k++) {
-		if(useridlist[k] == mSelfUserId)
-			continue;
-		RequestOtherUserVideo(useridlist[k]);
-		break;
-	}
 }
 
 // �û����루�뿪�����䣬dwUserId��ʾ�û�ID�ţ�bEnterRoom��ʾ���û��ǽ��루1�����뿪��0������
@@ -146,23 +143,17 @@ function OnAnyChatUserAtRoom(dwUserId, bEnterRoom) {
 	RoomUserListControl(dwUserId, bEnterRoom ? true : false);
     if (bEnterRoom == 1) {
 		ShowNotifyMessage(BRAC_GetUserName(dwUserId) +"&nbspenter room!", NOTIFY_TYPE_NORMAL);
-		if(mTargetUserId == -1)						// Ĭ�ϴ�һ���û�������Ƶ
-			RequestOtherUserVideo(dwUserId);
+		//if(mTargetUserId == -1)						// Ĭ�ϴ�һ���û�������Ƶ
+			//RequestOtherUserVideo(dwUserId);
     }
     else {
 		ShowNotifyMessage(BRAC_GetUserName(dwUserId) +"&nbspleave room!", NOTIFY_TYPE_NORMAL);
         if (dwUserId == mTargetUserId) {			// ��ǰ��������û��뿪���䣬Ĭ�����󷿼��������û�������Ƶ
 			reVideoDivSize();
-			var bRequestOtherUser = false;
+			//var bRequestOtherUser = false;
 			var useridlist = BRAC_GetOnlineUser();
-			for (var k=0; k<useridlist.length; k++) {
-				if(useridlist[k] == mSelfUserId)
-				continue;
-				RequestOtherUserVideo(useridlist[k]);
-				bRequestOtherUser = true;
-				break;
-			}
-			if(!bRequestOtherUser) {				// ���û�������û����ߣ������״̬
+			
+			if(useridlist.length<1) {				// ���û�������û����ߣ������״̬
 				mTargetUserId = -1;
 				BRAC_SetVideoPos(0, GetID("AnyChatRemoteVideoDiv"), "ANYCHAT_VIDEO_REMOTE");
 			}

@@ -38,7 +38,7 @@ public class TeacherCheckAction extends BaseAction{
 //		System.out.println(record.getS_id());
 //		System.out.println(record.getScore());
 		if(teacherService.addRecord(record)!=-1){
-			return SUCCESS;
+			return null;
 		}else{
 			return ERROR;
 		}
