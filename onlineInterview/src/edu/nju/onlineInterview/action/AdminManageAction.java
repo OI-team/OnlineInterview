@@ -15,6 +15,7 @@ import edu.nju.onlineInterview.service.StudentService;
 import edu.nju.onlineInterview.util.FileUtil;
 import edu.nju.onlineInterview.util.MD5Util;
 import edu.nju.onlineInterview.vo.StudentBriefInfoVO;
+import net.sf.json.JSONArray;
 
 /**
  * @author mzdong E-mail:mzdong163.com
